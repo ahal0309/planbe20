@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TopographicBackground from "@/components/TopographicBackground";
+import SplashScreen from "@/components/SplashScreen";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} light`} suppressHydrationWarning>
       <body className="antialiased min-h-screen flex flex-col bg-surface text-ink font-sans selection:bg-ochre selection:text-white" suppressHydrationWarning>
+        <SplashScreen />
         <TopographicBackground />
         <Navbar />
         <main className="flex-grow">{children}</main>
