@@ -61,7 +61,7 @@ export default function ServicesPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F7F5F2] w-full font-sans text-[#111111] overflow-hidden pt-32 pb-24 px-6 md:px-margin-desktop">
+    <main className="min-h-screen bg-[#F5F5DC] w-full font-sans text-[#111111] overflow-hidden pt-32 pb-24 px-6 md:px-margin-desktop">
       <div className="max-w-[1400px] mx-auto flex flex-col pt-12 md:pt-16">
         {/* Header Section */}
         <div className="mb-20 md:mb-28 max-w-4xl">
@@ -93,12 +93,37 @@ export default function ServicesPage() {
               className="group w-full bg-white border border-[#111111]/5 rounded-md p-8 md:p-12 hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:border-[#111111]/10 transition-all duration-700"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                {/* 1. Monospace Number & Image Block */}
-                <div className="lg:col-span-4 flex items-center space-x-8">
-                  <span className="font-mono text-lg md:text-xl text-[#8FA3A6] font-semibold tracking-wider">
+                {/* 1. Title & Tag Block (Left) */}
+                <div className="lg:col-span-4 flex items-start space-x-6">
+                  <span className="font-mono text-lg md:text-xl text-[#8FA3A6] font-semibold tracking-wider flex-shrink-0 mt-1">
                     {service.num}
                   </span>
-                  <div className="relative w-44 sm:w-48 h-28 overflow-hidden rounded-sm bg-[#EAE8E4] flex-shrink-0">
+                  <div className="flex flex-col">
+                    <h3 className="font-serif text-2xl md:text-3xl text-[#888888] font-medium leading-tight group-hover:text-[#3E2723] transition-colors duration-300">
+                      {service.title}
+                    </h3>
+                    <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#8FA3A6] mt-3 block">
+                      {service.tag}
+                    </span>
+                  </div>
+                </div>
+ 
+                {/* 2. Description Block (Center) */}
+                <div className="lg:col-span-4 flex flex-col justify-center lg:px-4">
+                  <p className="text-sm text-[#6A6A6A] leading-relaxed font-light mb-4">
+                    {service.description}
+                  </p>
+                  <Link
+                    href={service.href}
+                    className="text-xs font-bold tracking-[0.15em] uppercase text-[#888888] hover:text-[#3E2723] transition-colors duration-300 w-fit"
+                  >
+                    {service.linkText}
+                  </Link>
+                </div>
+
+                {/* 3. Image & Redirect Button Block (Right) */}
+                <div className="lg:col-span-4 flex items-center justify-end space-x-6">
+                  <div className="relative w-64 sm:w-80 h-40 sm:h-48 overflow-hidden rounded-sm bg-[#EAE8E4] flex-shrink-0">
                     <Image
                       src={service.image}
                       alt={service.title}
@@ -106,31 +131,6 @@ export default function ServicesPage() {
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       sizes="(max-width: 768px) 150px, 200px"
                     />
-                  </div>
-                </div>
-
-                {/* 2. Title & Tag Block */}
-                <div className="lg:col-span-4 flex flex-col">
-                  <h3 className="font-serif text-2xl md:text-3xl text-[#111111] font-medium leading-tight group-hover:text-[#8B6B5D] transition-colors duration-300">
-                    {service.title}
-                  </h3>
-                  <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#8FA3A6] mt-3 block">
-                    {service.tag}
-                  </span>
-                </div>
- 
-                {/* 3. Description & Redirect Button Block */}
-                <div className="lg:col-span-4 flex items-center justify-between gap-6 lg:pl-4">
-                  <div className="flex flex-col flex-grow">
-                    <p className="text-sm text-[#6A6A6A] leading-relaxed font-light mb-4">
-                      {service.description}
-                    </p>
-                    <Link
-                      href={service.href}
-                      className="text-xs font-bold tracking-[0.15em] uppercase text-[#111111] hover:text-[#8B6B5D] transition-colors duration-300 w-fit"
-                    >
-                      {service.linkText}
-                    </Link>
                   </div>
                   <Link
                     href={service.href}
@@ -151,7 +151,7 @@ export default function ServicesPage() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
-          className="w-full bg-[#8B6B5D] text-white rounded-md p-10 md:p-16 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 shadow-sm"
+          className="w-full bg-[#3E2723] text-white rounded-md p-10 md:p-16 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 shadow-sm"
         >
           <div className="max-w-2xl">
             <h2 className="font-serif text-4xl md:text-6xl font-semibold mb-4 text-[#F7F5F2]">
@@ -163,7 +163,7 @@ export default function ServicesPage() {
           </div>
           <Link
             href="/#contact"
-            className="flex-shrink-0 bg-[#F7F5F2] hover:bg-white text-[#8B6B5D] px-8 py-4 rounded-sm transition-all duration-300 font-sans text-sm font-bold tracking-[0.2em] uppercase shadow-md hover:scale-105 active:scale-95"
+            className="flex-shrink-0 bg-[#F7F5F2] hover:bg-white text-[#3E2723] px-8 py-4 rounded-sm transition-all duration-300 font-sans text-sm font-bold tracking-[0.2em] uppercase shadow-md hover:scale-105 active:scale-95"
           >
             Book a Consultation
           </Link>

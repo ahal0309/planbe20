@@ -228,7 +228,7 @@ export default function AboutPage() {
       </section>
 
       {/* 5. Our Team Section */}
-      <section className="w-full py-24 md:py-32 bg-[#8B6B5D]">
+      <section className="w-full py-24 md:py-32 bg-[#3E2723]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-margin-desktop">
           <motion.div
             initial="hidden"
