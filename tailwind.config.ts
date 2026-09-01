@@ -15,7 +15,7 @@ const config: Config = {
         "surface-bright": "#f9f9f9",
         "on-secondary-fixed": "#281900",
         "inverse-surface": "#2f3131",
-        "warm-canvas": "#F3EEE7",
+        "warm-canvas": "#EBE7DD",
         "error-container": "#ffdad6",
         "inverse-primary": "#c8c6c5",
         "on-error": "#ffffff",
@@ -78,9 +78,9 @@ const config: Config = {
       },
       fontFamily: {
         serif: ["var(--font-playfair)", "Playfair Display", "serif"],
-        sans: ["var(--font-inter)", "Inter", "sans-serif"],
+        sans: ["var(--font-playfair)", "Playfair Display", "serif"],
         headline: ["var(--font-playfair)", "Playfair Display", "serif"],
-        body: ["var(--font-inter)", "Inter", "sans-serif"],
+        body: ["var(--font-playfair)", "Playfair Display", "serif"],
       },
       maxWidth: {
         "container-max": "1440px",

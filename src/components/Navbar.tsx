@@ -13,7 +13,7 @@ export default function Navbar() {
     { label: "HOME", href: "/", active: pathname === "/" },
     { label: "ABOUT", href: "/about", active: pathname === "/about" },
     { label: "SERVICES", href: "/services", active: pathname === "/services" },
-    { label: "PROJECTS", href: "/#projects", active: pathname === "/#projects" },
+    { label: "PROJECTS", href: "/projects", active: pathname === "/projects" },
     { label: "PROCESS", href: "/#process", active: pathname === "/#process" },
   ];
 
