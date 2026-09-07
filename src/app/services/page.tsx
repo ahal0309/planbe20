@@ -151,7 +151,7 @@ export default function ServicesPage() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
-          className="w-full bg-[#3E2723] text-white rounded-md p-10 md:p-16 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 shadow-sm"
+          className="w-full bg-[#794934] text-white rounded-md p-10 md:p-16 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 shadow-sm"
         >
           <div className="max-w-2xl">
             <h2 className="font-serif text-4xl md:text-6xl font-semibold mb-4 text-[#F7F5F2]">
