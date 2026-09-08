@@ -61,7 +61,7 @@ export default function ServicesPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F5F5DC] w-full font-sans text-[#111111] overflow-hidden pt-32 pb-24 px-6 md:px-margin-desktop">
+    <main className="min-h-screen bg-[#E6DAC8] w-full font-sans text-[#111111] overflow-hidden pt-32 pb-24 px-6 md:px-margin-desktop">
       <div className="max-w-[1400px] mx-auto flex flex-col pt-12 md:pt-16">
         {/* Header Section */}
         <div className="mb-20 md:mb-28 max-w-4xl">
