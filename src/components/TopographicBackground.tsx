@@ -15,7 +15,7 @@ export default function TopographicBackground() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#FAFAFA]">
+    <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-surface">
       <motion.svg
         viewBox="0 0 1440 900"
         preserveAspectRatio="xMidYMid slice"
@@ -65,8 +65,8 @@ export default function TopographicBackground() {
       </motion.svg>
       
       {/* Soft gradient wash lowered so it doesn't completely hide the lines */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#FAFAFA_100%)] opacity-60" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAFA] via-transparent to-[#FAFAFA] opacity-30" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#FAF9F6_100%)] opacity-60" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#FAF9F6] via-transparent to-[#FAF9F6] opacity-30" />
     </div>
   );
 }
