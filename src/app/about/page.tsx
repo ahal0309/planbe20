@@ -73,9 +73,6 @@ export default function AboutPage() {
 
         <div className="relative z-10 w-full max-w-[1400px] mx-auto flex flex-col pt-32">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <p className="text-white/70 tracking-[0.2em] uppercase text-sm md:text-base mb-4">
-              The Studio
-            </p>
             <StaggerText
               className="font-serif text-6xl sm:text-7xl md:text-9xl leading-none text-white tracking-tight"
               text="About Us"
@@ -96,9 +93,6 @@ export default function AboutPage() {
             variants={fadeUp}
             className="lg:col-span-4 flex flex-col justify-start"
           >
-            <span className="text-sm leading-[1.5] tracking-[0.2em] font-bold uppercase text-[#6A6A6A] mb-4 block">
-              About
-            </span>
             <h2 className="font-serif text-5xl md:text-6xl font-semibold leading-tight text-[#111111]">
               Who We Are
             </h2>
@@ -165,9 +159,6 @@ export default function AboutPage() {
             className="flex flex-col gap-10 lg:pl-10"
           >
             <div>
-              <p className="text-[#6A6A6A] tracking-[0.2em] uppercase text-sm mb-4">
-                Philosophy
-              </p>
               <h3 className="font-serif text-5xl md:text-7xl text-[#111111] mb-6">
                 Our Approach
               </h3>
@@ -202,9 +193,6 @@ export default function AboutPage() {
             variants={fadeUp}
             className="lg:col-span-4 flex flex-col justify-start"
           >
-            <span className="text-sm leading-[1.5] tracking-[0.2em] font-bold uppercase text-[#6A6A6A] mb-4 block">
-              Future
-            </span>
             <h2 className="font-serif text-5xl md:text-6xl font-semibold leading-tight text-[#111111]">
               Our Vision
             </h2>

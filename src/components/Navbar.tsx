@@ -14,7 +14,6 @@ export default function Navbar() {
     { label: "ABOUT", href: "/about", active: pathname === "/about" },
     { label: "SERVICES", href: "/services", active: pathname === "/services" },
     { label: "PROJECTS", href: "/projects", active: pathname === "/projects" },
-    { label: "PROCESS", href: "/#process", active: pathname === "/#process" },
   ];
 
   return (
@@ -82,7 +81,7 @@ export default function Navbar() {
 
               {/* CONTACT Pill Button */}
               <Link
-                href="/#contact"
+                href="/contact"
                 className="ml-2 px-5 py-1.5 rounded-full bg-[#E5E0D8]/90 hover:bg-white text-ink text-[10.5px] font-bold tracking-[0.2em] uppercase shadow-[0_2px_8px_rgba(0,0,0,0.08)] border border-white/60 transition-all duration-300 hover:scale-105 active:scale-95"
               >
                 CONTACT
@@ -95,21 +94,21 @@ export default function Navbar() {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle Navigation Menu"
-              className="flex items-center justify-center w-10 h-10 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white shadow-lg focus:outline-none"
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-white/50 backdrop-blur-md border border-[#5A3728]/20 shadow-lg focus:outline-none"
             >
               <div className="w-4 h-3 flex flex-col justify-between items-center">
                 <span
-                  className={`w-full h-[1.5px] bg-white transition-all duration-300 ${
+                  className={`w-full h-[1.5px] bg-[#5A3728] transition-all duration-300 ${
                     mobileMenuOpen ? "rotate-45 translate-y-[5px]" : ""
                   }`}
                 />
                 <span
-                  className={`w-full h-[1.5px] bg-white transition-all duration-300 ${
+                  className={`w-full h-[1.5px] bg-[#5A3728] transition-all duration-300 ${
                     mobileMenuOpen ? "opacity-0" : ""
                   }`}
                 />
                 <span
-                  className={`w-full h-[1.5px] bg-white transition-all duration-300 ${
+                  className={`w-full h-[1.5px] bg-[#5A3728] transition-all duration-300 ${
                     mobileMenuOpen ? "-rotate-45 -translate-y-[5.5px]" : ""
                   }`}
                 />
@@ -137,7 +136,7 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
-              href="/#contact"
+              href="/contact"
               onClick={() => setMobileMenuOpen(false)}
               className="mt-4 px-8 py-3 rounded-full bg-[#E5E0D8] text-ink font-sans text-xs tracking-[0.2em] font-bold uppercase shadow-lg hover:bg-white transition-all"
             >

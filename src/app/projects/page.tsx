@@ -8,9 +8,9 @@ export const metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="w-full bg-[#3B2A25] text-white relative z-10 min-h-screen">
+    <div className="w-full bg-[#5A3728] text-white relative z-10 min-h-screen">
       {/* Hero Section */}
-      <section className="relative w-full min-h-screen flex items-center justify-start overflow-hidden px-6 md:px-margin-desktop bg-[#3B2A25]/50">
+      <section className="relative w-full min-h-screen flex items-center justify-start overflow-hidden px-6 md:px-margin-desktop bg-[#5A3728]/50">
         <Image
           src="/projects-hero.jpg"
           alt="Projects Hero"
@@ -19,7 +19,7 @@ export default function ProjectsPage() {
           priority
         />
         {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-[#3B2A25]/40 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-[#5A3728]/40 mix-blend-multiply"></div>
         
         <div className="relative z-10 max-w-2xl text-white mt-20">
           <div className="flex items-center gap-4 mb-6">
