@@ -109,7 +109,7 @@ export default function ContactPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
               {/* Full Name */}
               <div className="flex flex-col gap-2 relative">
-                <label htmlFor="name" className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#5A3728]">
+                <label htmlFor="name" className="text-xs font-bold tracking-[0.15em] uppercase text-[#5A3728]">
                   Full Name *
                 </label>
                 <input 
@@ -123,7 +123,7 @@ export default function ContactPage() {
 
               {/* Email Address */}
               <div className="flex flex-col gap-2 relative">
-                <label htmlFor="email" className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#5A3728]">
+                <label htmlFor="email" className="text-xs font-bold tracking-[0.15em] uppercase text-[#5A3728]">
                   Email Address *
                 </label>
                 <input 
@@ -139,7 +139,7 @@ export default function ContactPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
               {/* Phone Number */}
               <div className="flex flex-col gap-2 relative">
-                <label htmlFor="phone" className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#5A3728]">
+                <label htmlFor="phone" className="text-xs font-bold tracking-[0.15em] uppercase text-[#5A3728]">
                   Phone Number
                 </label>
                 <input 
@@ -155,7 +155,7 @@ export default function ContactPage() {
 
               {/* Project Type */}
               <div className="flex flex-col gap-2 relative">
-                <label htmlFor="projectType" className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#5A3728]">
+                <label htmlFor="projectType" className="text-xs font-bold tracking-[0.15em] uppercase text-[#5A3728]">
                   Project Type
                 </label>
                 <select 
@@ -182,7 +182,7 @@ export default function ContactPage() {
 
             {/* Project Description */}
             <div className="flex flex-col gap-2 mb-10 relative">
-              <label htmlFor="description" className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#5A3728]">
+              <label htmlFor="description" className="text-xs font-bold tracking-[0.15em] uppercase text-[#5A3728]">
                 Project Description *
               </label>
               <textarea 

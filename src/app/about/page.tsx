@@ -1,11 +1,25 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { StaggerText } from "@/components/ui/stagger-text";
 import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function AboutPage() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, clientWidth } = scrollContainerRef.current;
+      const scrollAmount = clientWidth * 0.8;
+      scrollContainerRef.current.scrollTo({
+        left: direction === "left" ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   const fadeUp = {
     hidden: { opacity: 0, y: 40 },
     visible: {
@@ -218,31 +232,54 @@ export default function AboutPage() {
       {/* 5. Our Team Section */}
       <section className="w-full py-24 md:py-32 bg-[#3E2723]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-margin-desktop">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="mb-16"
-          >
-            <span className="text-sm leading-[1.5] tracking-[0.2em] font-bold uppercase text-[#E5E0D8]/80 mb-4 block">
-              Our Team
-            </span>
-            <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-semibold leading-tight text-white">
-              The Collective
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-12">
-            {teamMembers.map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-col group"
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+            >
+              <span className="text-sm leading-[1.5] tracking-[0.2em] font-bold uppercase text-[#E5E0D8]/80 mb-4 block">
+                Our Team
+              </span>
+              <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-semibold leading-tight text-white">
+                The Collective
+              </h2>
+            </motion.div>
+            
+            <div className="flex items-center gap-4">
+              <button 
+                onClick={() => scroll("left")} 
+                className="p-4 rounded-full border border-white/20 text-white hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-white/50"
+                aria-label="Scroll left"
               >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              <button 
+                onClick={() => scroll("right")} 
+                className="p-4 rounded-full border border-white/20 text-white hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-white/50"
+                aria-label="Scroll right"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </div>
+          </div>
+
+          <div className="relative -mx-6 px-6 md:-mx-[var(--margin-desktop)] md:px-[var(--margin-desktop)]">
+            <div 
+              ref={scrollContainerRef}
+              className="flex gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-12 pt-4"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {teamMembers.map((member, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  className="flex flex-col group min-w-[280px] sm:min-w-[320px] max-w-[320px] snap-start shrink-0"
+                >
                 {/* Blueprint Drafting Style Placeholder Image */}
                 <div className="w-full aspect-[3/4] bg-[#EAE8E4] border border-white/5 flex items-center justify-center relative overflow-hidden mb-5 rounded-sm transition-colors duration-500 group-hover:bg-[#F7F5F2]">
                   <svg
@@ -267,7 +304,8 @@ export default function AboutPage() {
                   {member.role}
                 </span>
               </motion.div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
