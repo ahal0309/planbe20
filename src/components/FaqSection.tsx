@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
@@ -88,6 +89,7 @@ const faqs = [
 
 export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [isSectionOpen, setIsSectionOpen] = useState(false);
 
   const toggleFaq = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -99,57 +101,78 @@ export default function FaqSection() {
         <h2 className="font-serif text-5xl md:text-6xl leading-none text-[#111111] tracking-tight">
           Frequently Asked <span className="text-[#5A3728] italic font-light">Questions</span>
         </h2>
-        <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#888888] max-w-[200px] md:text-right md:pb-2">
-          Everything you need to know
-        </p>
+        <button
+          onClick={() => setIsSectionOpen(!isSectionOpen)}
+          className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full border border-[#E0E0E0] hover:border-[#5A3728] transition-colors focus:outline-none mb-2 md:mb-0"
+          aria-label={isSectionOpen ? "Close FAQ list" : "Open FAQ list"}
+        >
+          <motion.div
+            animate={{ rotate: isSectionOpen ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ChevronDown className="w-6 h-6 text-[#5A3728]" />
+          </motion.div>
+        </button>
       </div>
 
-      <div className="flex flex-col border-t border-[#E0E0E0]">
-        {faqs.map((faq, index) => {
-          const isOpen = openIndex === index;
-          return (
-            <div key={index} className="border-b border-[#E0E0E0]">
-              <button
-                onClick={() => toggleFaq(index)}
-                className="w-full py-6 flex items-center justify-between text-left focus:outline-none group"
-              >
-                <div className="flex gap-4 sm:gap-8 items-start">
-                  <span className="text-sm font-mono text-[#A0A0A0] mt-1 group-hover:text-[#5A3728] transition-colors">
-                    {(index + 1).toString().padStart(2, '0')}
-                  </span>
-                  <h3 className="font-serif text-xl sm:text-2xl text-[#111111] group-hover:text-[#5A3728] transition-colors">
-                    {faq.q}
-                  </h3>
-                </div>
-                <div className="ml-4 flex-shrink-0 relative w-6 h-6 flex items-center justify-center">
-                  <div className="absolute w-4 h-[1px] bg-[#5A3728]" />
-                  <motion.div 
-                    animate={{ rotate: isOpen ? 90 : 0 }} 
-                    transition={{ duration: 0.3 }}
-                    className="absolute w-[1px] h-4 bg-[#5A3728]" 
-                  />
-                </div>
-              </button>
+      <AnimatePresence>
+        {isSectionOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="overflow-hidden"
+          >
+            <div className="flex flex-col border-t border-[#E0E0E0]">
+              {faqs.map((faq, index) => {
+                const isOpen = openIndex === index;
+                return (
+                  <div key={index} className="border-b border-[#E0E0E0]">
+                    <button
+                      onClick={() => toggleFaq(index)}
+                      className="w-full py-6 flex items-center justify-between text-left focus:outline-none group"
+                    >
+                      <div className="flex gap-4 sm:gap-8 items-start">
+                        <span className="text-sm font-mono text-[#A0A0A0] mt-1 group-hover:text-[#5A3728] transition-colors">
+                          {(index + 1).toString().padStart(2, '0')}
+                        </span>
+                        <h3 className="font-serif text-xl sm:text-2xl text-[#111111] group-hover:text-[#5A3728] transition-colors">
+                          {faq.q}
+                        </h3>
+                      </div>
+                      <div className="ml-4 flex-shrink-0 relative w-6 h-6 flex items-center justify-center">
+                        <div className="absolute w-4 h-[1px] bg-[#5A3728]" />
+                        <motion.div 
+                          animate={{ rotate: isOpen ? 90 : 0 }} 
+                          transition={{ duration: 0.3 }}
+                          className="absolute w-[1px] h-4 bg-[#5A3728]" 
+                        />
+                      </div>
+                    </button>
 
-              <AnimatePresence>
-                {isOpen && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="pb-8 pl-[3rem] sm:pl-[4.5rem] pr-4 max-w-4xl text-[#6A6A6A] leading-relaxed font-light whitespace-pre-wrap">
-                      {faq.a}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                    <AnimatePresence>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="pb-8 pl-[3rem] sm:pl-[4.5rem] pr-4 max-w-4xl text-[#6A6A6A] leading-relaxed font-light whitespace-pre-wrap">
+                            {faq.a}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
             </div>
-          );
-        })}
-      </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

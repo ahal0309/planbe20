@@ -25,7 +25,7 @@ export default function ServicesPage() {
       description:
         "We design buildings that respond to their context, climate, and purpose. From initial concepts and planning to detailed drawings, approvals, and construction support, our architectural services are tailored to create spaces that are functional, sustainable, and timeless. Every project is carefully developed to balance aesthetics, performance, and the unique aspirations of each client.",
       image: "/akhil.png",
-      href: "/#projects",
+      href: "/projects",
       linkText: "View Projects",
     },
     {
@@ -35,7 +35,7 @@ export default function ServicesPage() {
       description:
         "Our interior design approach focuses on creating environments that are elegant, functional, and deeply personal. Through careful attention to materials, lighting, proportions, and detail, we craft interiors that reflect the character of the people who use them while enhancing comfort and everyday living. The result is a cohesive space that feels refined, practical, and enduring.",
       image: "/amal.png",
-      href: "/#projects",
+      href: "/projects",
       linkText: "View Projects",
     },
     {
@@ -45,7 +45,7 @@ export default function ServicesPage() {
       description:
         "We believe architecture and landscape should work together as one. Our landscape design services include site planning, planting design, outdoor living spaces, hardscape development, and ecological integration. By responding to the site's natural features and climate, we create outdoor environments that enrich the overall experience of a place and strengthen the connection between people and nature.",
       image: "/joseph.png",
-      href: "/#projects",
+      href: "/projects",
       linkText: "View Projects",
     },
     {
@@ -55,8 +55,8 @@ export default function ServicesPage() {
       description:
         "A successful project requires more than great design—it demands careful coordination and execution. Our project management and site supervision services ensure that every stage of construction is carried out with accuracy, quality, and efficiency. We oversee consultants, contractors, vendors, budgets, timelines, and quality control, providing clients with a streamlined and transparent process from groundbreaking to final handover.",
       image: "/unnikrishnan.png",
-      href: "/#contact",
-      linkText: "Contact Us",
+      href: "/projects",
+      linkText: "View Projects",
     },
   ];
 

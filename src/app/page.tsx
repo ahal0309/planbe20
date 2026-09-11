@@ -3,7 +3,8 @@
 import Hero from "@/components/Hero";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect } from "react";
 
 interface ApproachItem {
   title: string;
@@ -23,31 +24,31 @@ const approachItems: ApproachItem[] = [
   },
 ];
 
-interface Project {
-  title: string;
-  category: string;
-  year: string;
-  image: string;
-  offset: boolean;
-  href: string;
+interface Testimonial {
+  name: string;
+  role: string;
+  review: string;
+  image: string | null;
 }
 
-const projects: Project[] = [
+const testimonials: Testimonial[] = [
   {
-    title: "AKHIL RESIDENCE",
-    category: "Architecture",
-    year: "2024",
-    image: "/akhil.png",
-    offset: false,
-    href: "#",
+    name: "John Doe",
+    role: "Residence Owner",
+    review: "Working with Plan Be was an absolute pleasure. They understood our vision perfectly and transformed our ideas into a beautiful, functional home that we love.",
+    image: null,
   },
   {
-    title: "LONG VIEW",
-    category: "Landscape",
-    year: "2025",
-    image: "/long_view.png",
-    offset: true,
-    href: "#",
+    name: "Sarah Smith",
+    role: "Commercial Project",
+    review: "The team's attention to detail and commitment to quality is unmatched. The spaces they create are not just visually stunning but deeply rooted in context and craftsmanship.",
+    image: null,
+  },
+  {
+    name: "Michael Brown",
+    role: "Interior Design Client",
+    review: "From the first meeting to the final handover, the entire process was seamless. They brought our dream space to life with such clarity and purpose.",
+    image: null,
   },
 ];
 
@@ -91,6 +92,15 @@ const processSteps: ProcessStep[] = [
 ];
 
 export default function HomePage() {
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <>
       {/* Full-Screen Hero Section matching screenshot */}
@@ -123,94 +133,133 @@ export default function HomePage() {
             className="flex flex-col gap-10 lg:pl-10"
           >
             <div>
-              <p className="text-ashen tracking-[0.2em] uppercase text-sm font-bold mb-4">
-                Philosophy
-              </p>
-              <h3 className="font-serif text-4xl md:text-5xl lg:text-[56px] font-semibold text-ink leading-tight mb-6">
-                Our Approach
+              <h3 className="font-serif text-5xl md:text-7xl text-ink mb-6">
+                Our Philosophy
               </h3>
-              <p className="text-ink/80 leading-relaxed text-base md:text-lg">
+              <p className="text-ink/80 font-bold leading-relaxed md:text-xl">
                 We seek inspiration in simplicity, finding harmony between architecture, nature, and everyday life.
               </p>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-8 pt-6 border-t border-ink/10">
               {approachItems.map((item, index) => (
-                <div key={index} className="flex flex-col gap-3 border-t border-ink/10 pt-6">
-                  <h4 className="font-sans text-xl md:text-2xl font-semibold text-ink">
-                    {item.title}
-                  </h4>
-                  <p className="text-ashen leading-relaxed text-sm md:text-base">
-                    {item.description}
-                  </p>
-                </div>
+                <p key={index} className="text-ashen leading-relaxed md:text-lg">
+                  {item.description}
+                </p>
               ))}
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Featured Projects Section */}
-      <section id="projects" className="w-full max-w-container-max mx-auto px-6 md:px-margin-desktop py-20 md:py-32 scroll-mt-36">
+      {/* Client Testimonials Section */}
+      <section id="testimonials" className="w-full max-w-container-max mx-auto px-6 md:px-margin-desktop py-20 md:py-32 scroll-mt-36">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16">
           <div>
             <span className="text-sm leading-[1.5] tracking-[0.2em] font-bold uppercase text-ashen block mb-3">
-              Portfolio
+              Testimonials
             </span>
             <h2 className="font-serif text-4xl md:text-5xl lg:text-[56px] font-semibold leading-[1.2]">
-              PROJECTS
+              CLIENT REVIEWS
             </h2>
           </div>
           <p className="text-base md:text-lg text-ashen max-w-md mt-4 md:mt-0 leading-relaxed">
-            A collection of spaces thoughtfully designed from concept to reality.
+            What our clients have to say about their experience working with us.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-gutter">
-          {projects.map((project, index) => (
-            <Link
-              key={index}
-              href={project.href}
-              className={`group block cursor-pointer ${project.offset ? "mt-0 md:mt-24" : ""}`}
-            >
-              <div className="relative overflow-hidden mb-6 bg-surface-container aspect-[4/3] rounded-sm">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-              <div className="flex justify-between items-start border-t border-ink/20 pt-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-gutter items-center">
+          {/* Left Side: Square Image Placeholder */}
+          <div className="relative w-full aspect-square bg-[#EAE8E4] rounded-sm overflow-hidden flex items-center justify-center border border-ink/5">
+            <AnimatePresence mode="wait">
+              {testimonials[activeTestimonial].image ? (
+                <motion.div
+                  key={activeTestimonial}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={testimonials[activeTestimonial].image!}
+                    alt={testimonials[activeTestimonial].name}
+                    fill
+                    className="object-cover"
+                  />
+                </motion.div>
+              ) : (
+                <motion.svg
+                  key={`placeholder-${activeTestimonial}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  width="80"
+                  height="80"
+                  viewBox="0 0 60 60"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="opacity-20 stroke-ink"
+                  strokeWidth="1.5"
+                >
+                  <circle cx="30" cy="20" r="12" strokeDasharray="3 3" />
+                  <path d="M10 50C10 38.9543 18.9543 30 30 30C41.0457 30 50 38.9543 50 50" strokeDasharray="3 3" />
+                </motion.svg>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Right Side: Review Details */}
+          <div className="flex flex-col justify-center min-h-[300px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTestimonial}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="flex flex-col"
+              >
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="mb-6 opacity-20">
+                  <path d="M16 10C16 13.3137 13.3137 16 10 16C6.68629 16 4 13.3137 4 10C4 6.68629 6.68629 4 10 4C13.3137 4 16 6.68629 16 10ZM16 10V22C16 28.6274 10.6274 34 4 34" stroke="#111111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M36 10C36 13.3137 33.3137 16 30 16C26.6862 16 24 13.3137 24 10C24 6.68629 26.6862 4 30 4C33.3137 4 36 6.68629 36 10ZM36 10V22C36 28.6274 30.6274 34 24 34" stroke="#111111" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                
+                <p className="font-serif text-2xl md:text-3xl leading-relaxed text-ink mb-8 italic">
+                  "{testimonials[activeTestimonial].review}"
+                </p>
+                
                 <div>
-                  <h3 className="text-xl md:text-2xl font-semibold group-hover:text-ochre transition-colors duration-300">
-                    {project.title}
+                  <h3 className="font-sans text-xl font-bold tracking-wide text-ink uppercase">
+                    {testimonials[activeTestimonial].name}
                   </h3>
-                  <span className="text-xs sm:text-sm text-ashen mt-1 block tracking-wider uppercase font-medium">
-                    {project.category}
+                  <span className="text-sm font-medium tracking-[0.15em] uppercase text-ashen mt-1 block">
+                    {testimonials[activeTestimonial].role}
                   </span>
                 </div>
-                <span className="text-xs sm:text-sm font-semibold tracking-widest text-ashen">
-                  {project.year}
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        <div className="mt-16 md:mt-24 text-center">
-          <Link
-            href="#projects"
-            className="inline-flex text-sm leading-[1.5] tracking-[0.2em] font-bold uppercase border-b-2 border-ink pb-1 hover:text-ochre hover:border-ochre transition-colors duration-300"
-          >
-            View All Projects →
-          </Link>
+              </motion.div>
+            </AnimatePresence>
+            
+            {/* Dots Pagination */}
+            <div className="flex items-center gap-3 mt-12">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveTestimonial(index)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    activeTestimonial === index ? "w-8 bg-[#5A3728]" : "w-2 bg-ink/20 hover:bg-ink/40"
+                  }`}
+                  aria-label={`View testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Process Section */}
-      <section id="process" className="w-full bg-ink text-surface py-20 md:py-32 scroll-mt-36">
+      <section id="process" className="w-full bg-[#3E2723] text-surface py-20 md:py-32 scroll-mt-36">
         <div className="max-w-container-max mx-auto px-6 md:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-gutter">
           <div className="md:col-span-5">
             <span className="text-sm leading-[1.5] tracking-[0.2em] font-bold uppercase text-ashen block mb-4">

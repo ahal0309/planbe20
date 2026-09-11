@@ -174,23 +174,18 @@ export default function AboutPage() {
           >
             <div>
               <h3 className="font-serif text-5xl md:text-7xl text-[#111111] mb-6">
-                Our Approach
+                Our Philosophy
               </h3>
-              <p className="text-[#6A6A6A] leading-relaxed md:text-xl">
+              <p className="text-[#6A6A6A] font-bold leading-relaxed md:text-xl">
                 We seek inspiration in simplicity, finding harmony between architecture, nature, and everyday life.
               </p>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-8 pt-6 border-t border-[#111111]/10">
               {approachItems.map((item, index) => (
-                <div key={index} className="flex flex-col gap-3 border-t border-[#111111]/10 pt-6">
-                  <h4 className="font-sans text-2xl md:text-3xl font-semibold text-[#111111]">
-                    {item.title}
-                  </h4>
-                  <p className="text-[#6A6A6A] leading-relaxed md:text-lg">
-                    {item.description}
-                  </p>
-                </div>
+                <p key={index} className="text-[#6A6A6A] leading-relaxed md:text-lg">
+                  {item.description}
+                </p>
               ))}
             </div>
           </motion.div>
