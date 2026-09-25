@@ -180,6 +180,18 @@ export default function ProjectsPage() {
 
         </div>
       </section>
+
+      {/* Gallery Link Section */}
+      <section className="w-full px-6 md:px-margin-desktop pb-20 pt-10">
+        <Link href="/gallery" className="flex items-center justify-start gap-6 md:gap-10 w-full group">
+          <div className="bg-white text-black px-8 py-3 rounded-2xl text-4xl md:text-5xl font-serif shadow-sm">
+            GALLERY
+          </div>
+          <svg className="w-12 h-12 md:w-16 md:h-16 text-black transition-transform group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3 12h18m0 0l-8.5-8.5M21 12l-8.5 8.5" />
+          </svg>
+        </Link>
+      </section>
     </div>
   );
 }
