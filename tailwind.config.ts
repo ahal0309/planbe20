@@ -78,9 +78,9 @@ const config: Config = {
       },
       fontFamily: {
         serif: ["var(--font-playfair)", "Playfair Display", "serif"],
-        sans: ["var(--font-playfair)", "Playfair Display", "serif"],
+        sans: ["var(--font-inter)", "Inter", "sans-serif"],
         headline: ["var(--font-playfair)", "Playfair Display", "serif"],
-        body: ["var(--font-playfair)", "Playfair Display", "serif"],
+        body: ["var(--font-inter)", "Inter", "sans-serif"],
       },
       maxWidth: {
         "container-max": "1440px",

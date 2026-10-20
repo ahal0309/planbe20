@@ -70,159 +70,115 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F7F5F2] w-full font-sans text-[#111111] overflow-hidden">
+    <main className="min-h-screen bg-[#E6DAC8] w-full font-sans text-[#111111] overflow-hidden pt-32 pb-24 px-6 md:px-margin-desktop">
       {/* 1. Hero Section */}
-      <section className="relative w-full h-[70vh] md:h-[85vh] flex items-end pb-12 md:pb-24 px-6 md:px-margin-desktop">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/long_view.png"
-            alt="About PlanBē"
-            fill
-            priority
-            className="object-cover brightness-[0.85]"
-            sizes="100vw"
+      <div className="max-w-[1400px] mx-auto flex flex-col pt-12 md:pt-16 mb-16 md:mb-24">
+        <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-4xl">
+          <span className="text-sm leading-[1.5] tracking-[0.2em] font-bold uppercase text-[#6A6A6A] mb-4 block">
+            Who We Are
+          </span>
+          <StaggerText
+            className="font-serif text-4xl sm:text-5xl md:text-7xl leading-none text-[#111111] tracking-tight mb-8"
+            text="About Us"
+            direction="bottom"
+            stagger={0.08}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-        </div>
+          <p className="text-lg md:text-xl text-[#6A6A6A] leading-relaxed max-w-2xl font-light">
+            A Kochi-based architectural and interior design practice creating spaces that are climate-responsive, contextual, and built to last.
+          </p>
+        </motion.div>
+      </div>
 
-        <div className="relative z-10 w-full max-w-[1400px] mx-auto flex flex-col pt-32">
-          <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-            <StaggerText
-              className="font-serif text-6xl sm:text-7xl md:text-9xl leading-none text-white tracking-tight"
-              text="About Us"
-              direction="bottom"
-              stagger={0.1}
-            />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 2. Who We Are Section */}
-      <section className="w-full py-20 md:py-32 bg-transparent border-b border-[#111111]/10">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="lg:col-span-4 flex flex-col justify-start"
-          >
-            <h2 className="font-serif text-5xl md:text-6xl font-semibold leading-tight text-[#111111]">
-              Who We Are
-            </h2>
-          </motion.div>
-          
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="lg:col-span-8 flex flex-col"
-          >
-            <p className="text-xl md:text-2xl font-medium leading-relaxed text-[#111111] mb-12 max-w-3xl">
-              Plan Be Design Studio is a Kochi-based architectural and interior design practice established in 2018, creating spaces that are climate-responsive, contextual, and built to last. Since our inception, we have delivered a diverse portfolio of projects across residential, commercial, hospitality, and institutional sectors, growing into a multidisciplinary studio that offers complete design solutions from concept to completion.
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-              <div className="space-y-6">
-                <p className="text-lg text-[#6A6A6A] leading-relaxed">
-                  Our work is rooted in an understanding of Kerala's tropical climate, culture, and landscape. From climate-responsive homes and thoughtfully crafted interiors to commercial developments, resorts, community halls, and churches, we design spaces that balance functionality, sustainability, and timeless aesthetics.
-                </p>
-                <p className="text-lg text-[#6A6A6A] leading-relaxed">
-                  At Plan Be Design Studio, we believe architecture should do more than look beautiful—it should perform. Every project is shaped by its site, environment, and the people who will experience it, resulting in spaces that are comfortable, efficient, and enduring.
-                </p>
-              </div>
-              
-              <div className="space-y-6">
-                <p className="text-lg text-[#6A6A6A] leading-relaxed">
-                  Beyond design, we provide comprehensive project management and site supervision services, ensuring seamless execution at every stage. From the initial idea to the final handover, we are committed to delivering quality, precision, and a collaborative design experience.
-                </p>
-                <p className="text-lg text-[#6A6A6A] leading-relaxed">
-                  With years of experience and over 100 completed projects, our approach remains unchanged: thoughtful design, honest materials, and architecture that truly belongs to its place and purpose.
-                </p>
-              </div>
+      {/* About Sections Cards Container */}
+      <div className="max-w-[1400px] mx-auto flex flex-col gap-12 md:gap-16 mb-24">
+        {/* 2. Who We Are Card */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeUp}
+          className="group w-full bg-white border border-[#111111]/5 rounded-md p-8 md:p-12 hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:border-[#111111]/10 transition-all duration-700"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            <div className="lg:col-span-4 flex flex-col justify-start">
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium text-[#111111] leading-tight">
+                Who We Are
+              </h2>
+              <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#8FA3A6] mt-3 block">
+                Studio Background & Roots
+              </span>
             </div>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* 3. Our Approach Section */}
-      <section className="w-full py-24 md:py-40 px-6 md:px-margin-desktop bg-[#F7F5F2]/50">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="w-full aspect-square md:aspect-[4/5] bg-[#EAE8E4] relative overflow-hidden lg:sticky lg:top-24 rounded-sm shadow-sm"
-          >
-            <Image
-              src="/akhil.png"
-              alt="Our Approach"
-              fill
-              className="object-cover transition-all duration-700 hover:scale-105"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="flex flex-col gap-10 lg:pl-10"
-          >
-            <div>
-              <h3 className="font-serif text-5xl md:text-7xl text-[#111111] mb-6">
-                Our Philosophy
-              </h3>
-              <p className="text-[#6A6A6A] font-bold leading-relaxed md:text-xl">
-                We seek inspiration in simplicity, finding harmony between architecture, nature, and everyday life.
+            <div className="lg:col-span-8 flex flex-col justify-center">
+              <p className="font-sans text-base sm:text-lg md:text-xl text-[#6A6A6A] leading-relaxed text-left font-light">
+                <strong className="font-bold text-[#111111]">Plan Be Design Studio</strong> is a Kochi-based architectural and interior design practice established in 2018, creating climate-responsive, contextual, and enduring spaces rooted in Kerala’s tropical climate, culture, and landscape. With over 100 completed projects across residential, commercial, hospitality, and institutional sectors, including homes, interiors, resorts, commercial developments, community halls, and churches, we offer comprehensive, multidisciplinary design solutions from concept to completion. Our approach balances functionality, sustainability, and timeless aesthetics, ensuring every project responds thoughtfully to its site, environment, and the people who experience it. Beyond design, we provide integrated project management and site supervision, delivering quality, precision, and seamless execution from the initial concept to final handover. Guided by thoughtful design, honest materials, and a commitment to performance, we create comfortable, efficient, and lasting spaces that truly belong to their place and purpose.
               </p>
             </div>
+          </div>
+        </motion.div>
 
-            <div className="space-y-8 pt-6 border-t border-[#111111]/10">
-              {approachItems.map((item, index) => (
-                <p key={index} className="text-[#6A6A6A] leading-relaxed md:text-lg">
-                  {item.description}
-                </p>
-              ))}
+        {/* 3. Our Philosophy Card */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeUp}
+          className="group w-full bg-white border border-[#111111]/5 rounded-md p-8 md:p-12 hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:border-[#111111]/10 transition-all duration-700"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            <div className="lg:col-span-4 flex flex-col justify-start">
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium text-[#111111] leading-tight">
+                Our Philosophy
+              </h2>
+              <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#8FA3A6] mt-3 block">
+                Design Approach & Core Beliefs
+              </span>
             </div>
-          </motion.div>
-        </div>
-      </section>
 
-      {/* 4. Our Vision Section */}
-      <section className="w-full py-20 md:py-32 bg-transparent border-t border-[#111111]/10">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="lg:col-span-4 flex flex-col justify-start"
-          >
-            <h2 className="font-serif text-5xl md:text-6xl font-semibold leading-tight text-[#111111]">
-              Our Vision
-            </h2>
-          </motion.div>
-          
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="lg:col-span-8 flex flex-col justify-center"
-          >
-            <p className="text-2xl md:text-3xl font-light leading-relaxed text-[#111111] mb-8">
-              To shape a built environment where architecture responds intelligently to place, enhances everyday experiences, and contributes positively to the communities it serves.
-            </p>
-            <p className="text-lg md:text-xl text-[#6A6A6A] leading-relaxed">
-              Through thoughtful design, innovation, and a commitment to quality, we aspire to create timeless spaces that inspire, endure, and leave a lasting impact on people and their surroundings.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+            <div className="lg:col-span-8 flex flex-col justify-center">
+              <p className="text-xl sm:text-2xl md:text-3xl font-light leading-relaxed text-[#111111] mb-6 md:mb-8 text-left font-serif">
+                We seek inspiration in simplicity, finding harmony between architecture, nature, and everyday life.
+              </p>
+              <div className="space-y-6">
+                {approachItems.map((item, index) => (
+                  <p key={index} className="text-base sm:text-lg md:text-xl text-[#6A6A6A] leading-relaxed text-left font-light">
+                    {item.description}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* 4. Our Vision Card */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeUp}
+          className="group w-full bg-white border border-[#111111]/5 rounded-md p-8 md:p-12 hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:border-[#111111]/10 transition-all duration-700"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            <div className="lg:col-span-4 flex flex-col justify-start">
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium text-[#111111] leading-tight">
+                Our Vision
+              </h2>
+              <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#8FA3A6] mt-3 block">
+                Future & Community Impact
+              </span>
+            </div>
+            
+            <div className="lg:col-span-8 flex flex-col justify-center">
+              <p className="text-xl sm:text-2xl md:text-3xl font-light leading-relaxed text-[#111111] mb-6 md:mb-8 text-left font-serif">
+                To shape a built environment where architecture responds intelligently to place, enhances everyday experiences, and contributes positively to the communities it serves.
+              </p>
+              <p className="text-base sm:text-lg md:text-xl text-[#6A6A6A] leading-relaxed text-left font-light">
+                Through thoughtful design, innovation, and a commitment to quality, we aspire to create timeless spaces that inspire, endure, and leave a lasting impact on people and their surroundings.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      </div>
 
       {/* 5. Our Team Section */}
       <section className="w-full py-24 md:py-32 bg-[#3E2723]">

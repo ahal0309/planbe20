@@ -57,7 +57,7 @@ export default function ProjectsPage() {
         {/* Masonry-style Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Card 1: Villa Sereno (Tall) */}
-          <div className="md:col-span-1 md:row-span-2 group cursor-pointer flex flex-col bg-warm-canvas text-ink">
+          <Link href="/projects/villa-sereno" className="md:col-span-1 md:row-span-2 group cursor-pointer flex flex-col bg-warm-canvas text-ink">
             <div className="relative w-full h-[300px] md:h-full min-h-[400px] bg-surface-dim overflow-hidden">
               <Image
                 src="/villa-sereno.jpg"
@@ -68,10 +68,13 @@ export default function ProjectsPage() {
             </div>
             <div className="p-8 flex flex-col justify-between flex-grow">
               <div>
-                <h3 className="text-2xl font-serif mb-4 uppercase">Villa Sereno</h3>
-                <p className="text-sm text-on-surface-variant leading-relaxed mb-8">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-                </p>
+                <span className="text-[10px] font-mono font-bold tracking-[0.2em] uppercase text-[#8FA3A6] block mb-2">
+                  RESIDENTIAL
+                </span>
+                <h3 className="text-2xl font-serif mb-2 uppercase">Villa Sereno</h3>
+                <span className="text-xs font-mono uppercase tracking-[0.15em] text-[#6A6A6A] block mb-8">
+                  Kottayam, Kerala, India · 2024
+                </span>
               </div>
               <div className="flex items-center text-xs font-semibold tracking-wider uppercase group-hover:text-secondary transition-colors">
                 VIEW PROJECT
@@ -80,10 +83,10 @@ export default function ProjectsPage() {
                 </svg>
               </div>
             </div>
-          </div>
+          </Link>
 
           {/* Card 2: The Glass House (Square) */}
-          <div className="md:col-span-1 group cursor-pointer flex flex-col bg-warm-canvas text-ink">
+          <Link href="/projects/glass-house" className="md:col-span-1 group cursor-pointer flex flex-col bg-warm-canvas text-ink">
             <div className="relative w-full h-[250px] bg-surface-dim overflow-hidden">
               <Image
                 src="/glass-house.jpg"
@@ -93,10 +96,13 @@ export default function ProjectsPage() {
               />
             </div>
             <div className="p-6">
-              <h3 className="text-xl font-serif mb-3 uppercase">The Glass House</h3>
-              <p className="text-sm text-on-surface-variant leading-relaxed mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-              </p>
+              <span className="text-[10px] font-mono font-bold tracking-[0.2em] uppercase text-[#8FA3A6] block mb-2">
+                COMMERCIAL
+              </span>
+              <h3 className="text-xl font-serif mb-2 uppercase">The Glass House</h3>
+              <span className="text-xs font-mono uppercase tracking-[0.15em] text-[#6A6A6A] block mb-6">
+                Kochi, Kerala, India · 2023
+              </span>
               <div className="flex items-center text-xs font-semibold tracking-wider uppercase group-hover:text-secondary transition-colors">
                 VIEW PROJECT
                 <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -104,23 +110,26 @@ export default function ProjectsPage() {
                 </svg>
               </div>
             </div>
-          </div>
+          </Link>
 
-          {/* Card 3: The Glass House (Square) */}
-          <div className="md:col-span-1 group cursor-pointer flex flex-col bg-warm-canvas text-ink">
+          {/* Card 3: Modern Living (Square) */}
+          <Link href="/projects/modern-living" className="md:col-span-1 group cursor-pointer flex flex-col bg-warm-canvas text-ink">
             <div className="relative w-full h-[250px] bg-surface-dim overflow-hidden">
               <Image
                 src="/3-trees-banner.jpg"
-                alt="The Glass House"
+                alt="Modern Living"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>
             <div className="p-6">
-              <h3 className="text-xl font-serif mb-3 uppercase">The Glass House</h3>
-              <p className="text-sm text-on-surface-variant leading-relaxed mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-              </p>
+              <span className="text-[10px] font-mono font-bold tracking-[0.2em] uppercase text-[#8FA3A6] block mb-2">
+                INTERIOR
+              </span>
+              <h3 className="text-xl font-serif mb-2 uppercase">Modern Living</h3>
+              <span className="text-xs font-mono uppercase tracking-[0.15em] text-[#6A6A6A] block mb-6">
+                Trivandrum, Kerala · 2024
+              </span>
               <div className="flex items-center text-xs font-semibold tracking-wider uppercase group-hover:text-secondary transition-colors">
                 VIEW PROJECT
                 <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -128,23 +137,26 @@ export default function ProjectsPage() {
                 </svg>
               </div>
             </div>
-          </div>
+          </Link>
 
-          {/* Card 4: The Glass House (Square) */}
-          <div className="md:col-span-1 group cursor-pointer flex flex-col bg-warm-canvas text-ink">
+          {/* Card 4: Entrance Courtyard (Square) */}
+          <Link href="/projects/entrance-courtyard" className="md:col-span-1 group cursor-pointer flex flex-col bg-warm-canvas text-ink">
             <div className="relative w-full h-[250px] bg-surface-dim overflow-hidden">
               <Image
                 src="/entrance-01.jpg"
-                alt="The Glass House"
+                alt="Entrance Courtyard"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
             </div>
             <div className="p-6">
-              <h3 className="text-xl font-serif mb-3 uppercase">The Glass House</h3>
-              <p className="text-sm text-on-surface-variant leading-relaxed mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-              </p>
+              <span className="text-[10px] font-mono font-bold tracking-[0.2em] uppercase text-[#8FA3A6] block mb-2">
+                RESIDENTIAL
+              </span>
+              <h3 className="text-xl font-serif mb-2 uppercase">Entrance Courtyard</h3>
+              <span className="text-xs font-mono uppercase tracking-[0.15em] text-[#6A6A6A] block mb-6">
+                Thrissur, Kerala · 2023
+              </span>
               <div className="flex items-center text-xs font-semibold tracking-wider uppercase group-hover:text-secondary transition-colors">
                 VIEW PROJECT
                 <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -152,10 +164,10 @@ export default function ProjectsPage() {
                 </svg>
               </div>
             </div>
-          </div>
+          </Link>
 
           {/* Card 5: Nature's Edge (Square) */}
-          <div className="md:col-span-1 group cursor-pointer flex flex-col bg-warm-canvas text-ink">
+          <Link href="/projects/natures-edge" className="md:col-span-1 group cursor-pointer flex flex-col bg-warm-canvas text-ink">
             <div className="relative w-full h-[250px] bg-surface-dim overflow-hidden">
               <Image
                 src="/ochre-5.jpg"
@@ -165,10 +177,13 @@ export default function ProjectsPage() {
               />
             </div>
             <div className="p-6">
-              <h3 className="text-xl font-serif mb-3 uppercase">Nature's Edge</h3>
-              <p className="text-sm text-on-surface-variant leading-relaxed mb-6">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-              </p>
+              <span className="text-[10px] font-mono font-bold tracking-[0.2em] uppercase text-[#8FA3A6] block mb-2">
+                HOSPITALITY
+              </span>
+              <h3 className="text-xl font-serif mb-2 uppercase">Nature's Edge</h3>
+              <span className="text-xs font-mono uppercase tracking-[0.15em] text-[#6A6A6A] block mb-6">
+                Wayanad, Kerala · 2024
+              </span>
               <div className="flex items-center text-xs font-semibold tracking-wider uppercase group-hover:text-secondary transition-colors">
                 VIEW PROJECT
                 <svg className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -176,7 +191,7 @@ export default function ProjectsPage() {
                 </svg>
               </div>
             </div>
-          </div>
+          </Link>
 
         </div>
       </section>

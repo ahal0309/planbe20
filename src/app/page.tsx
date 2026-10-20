@@ -5,22 +5,41 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
-interface ApproachItem {
-  title: string;
-  description: string;
+interface PhilosophySlide {
+  kicker: string;
+  quotePart1: string;
+  highlight: string;
+  quotePart2: string;
+  subtext: string;
+  tagline: string;
 }
 
-const approachItems: ApproachItem[] = [
+const philosophySlides: PhilosophySlide[] = [
   {
-    title: "Understanding People",
-    description:
-      "We believe great architecture begins with understanding people. Every project is shaped around the way our clients live, work, and interact with their environment, creating spaces that are intuitive, functional, and deeply personal.",
+    kicker: "OUR PHILOSOPHY",
+    quotePart1: "Innovation requires a deep respect for",
+    highlight: "tradition",
+    quotePart2: "—",
+    subtext: "seamlessly integrated with cutting-edge technology.",
+    tagline: "PLAN BĒ ARCHITECTURAL DESIGN STUDIO · EST. 2018 · COCHIN, KERALA",
   },
   {
-    title: "Context & Craftsmanship",
-    description:
-      "Our design process is guided by context, craftsmanship, and long-term value. Rather than following trends, we focus on creating meaningful spaces with clarity, purpose, and a strong connection to their surroundings—spaces that remain relevant and enriching for years to come.",
+    kicker: "DESIGN PRINCIPLE",
+    quotePart1: "Great architecture begins with",
+    highlight: "understanding people",
+    quotePart2: "—",
+    subtext: "creating spaces that are intuitive, functional, and deeply personal.",
+    tagline: "PLAN BĒ ARCHITECTURAL DESIGN STUDIO · EST. 2018 · COCHIN, KERALA",
+  },
+  {
+    kicker: "TIMELESS CONTEXT",
+    quotePart1: "Guided by context, craftsmanship and",
+    highlight: "long-term value",
+    quotePart2: "—",
+    subtext: "designing meaningful spaces with clarity, purpose, and natural harmony.",
+    tagline: "PLAN BĒ ARCHITECTURAL DESIGN STUDIO · EST. 2018 · COCHIN, KERALA",
   },
 ];
 
@@ -93,11 +112,19 @@ const processSteps: ProcessStep[] = [
 
 export default function HomePage() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [activePhilosophy, setActivePhilosophy] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActivePhilosophy((prev) => (prev + 1) % philosophySlides.length);
+    }, 6000);
     return () => clearInterval(timer);
   }, []);
 
@@ -250,49 +277,93 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Philosophy / Our Approach Section */}
-      <section id="studio" className="w-full bg-transparent py-24 md:py-40 relative scroll-mt-36">
-        <div className="max-w-container-max mx-auto px-6 md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full aspect-square md:aspect-[4/5] bg-[#EAE8E4] relative overflow-hidden lg:sticky lg:top-24 rounded-sm shadow-sm"
-          >
-            <Image
-              src="/akhil.png"
-              alt="Our Approach"
-              fill
-              className="object-cover transition-transform duration-700 hover:scale-105"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-          </motion.div>
+      {/* Philosophy Editorial Thought Slider Section */}
+      <section id="studio" className="w-full bg-transparent py-28 md:py-44 relative scroll-mt-36 overflow-hidden">
+        <div className="max-w-5xl mx-auto px-6 md:px-margin-desktop relative z-10 flex flex-col items-center text-center">
+          
+          {/* Subtle Top Architectural Motif */}
+          <div className="mb-6 flex flex-col items-center">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-40 text-[#5A3728]">
+              <circle cx="12" cy="5" r="2" fill="currentColor" />
+              <circle cx="6" cy="18" r="2" fill="currentColor" />
+              <circle cx="18" cy="18" r="2" fill="currentColor" />
+              <line x1="12" y1="5" x2="6" y2="18" stroke="currentColor" strokeWidth="1" strokeDasharray="2 2" />
+              <line x1="12" y1="5" x2="18" y2="18" stroke="currentColor" strokeWidth="1" strokeDasharray="2 2" />
+              <line x1="6" y1="18" x2="18" y2="18" stroke="currentColor" strokeWidth="1" strokeDasharray="2 2" />
+            </svg>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col gap-10 lg:pl-10"
-          >
-            <div>
-              <h3 className="font-serif text-5xl md:text-7xl text-ink mb-6">
-                Our Philosophy
-              </h3>
-              <p className="text-ink/80 font-bold leading-relaxed md:text-xl">
-                We seek inspiration in simplicity, finding harmony between architecture, nature, and everyday life.
-              </p>
+          <div className="relative w-full flex items-center justify-between min-h-[300px] md:min-h-[260px]">
+            {/* Left Nav Button */}
+            <button
+              onClick={() => setActivePhilosophy((prev) => (prev - 1 + philosophySlides.length) % philosophySlides.length)}
+              className="p-3 text-ink/30 hover:text-ink transition-colors duration-300 focus:outline-none"
+              aria-label="Previous philosophy slide"
+            >
+              <ChevronLeft className="w-7 h-7 md:w-8 md:h-8" strokeWidth={1} />
+            </button>
+
+            {/* Slide Content */}
+            <div className="w-full max-w-3xl px-4 md:px-8">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activePhilosophy}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  className="flex flex-col items-center"
+                >
+                  <span className="text-xs md:text-sm font-sans font-bold tracking-[0.3em] uppercase text-[#8FA3A6] mb-6 block">
+                    {philosophySlides[activePhilosophy].kicker}
+                  </span>
+
+                  <h3 className="font-serif text-3xl sm:text-4xl md:text-6xl text-[#111111] leading-[1.25] tracking-tight mb-6">
+                    {philosophySlides[activePhilosophy].quotePart1}{" "}
+                    <span className="italic font-normal text-[#5A3728]">
+                      {philosophySlides[activePhilosophy].highlight}
+                    </span>{" "}
+                    {philosophySlides[activePhilosophy].quotePart2}
+                  </h3>
+
+                  <p className="font-sans text-base sm:text-lg md:text-xl text-[#6A6A6A] leading-relaxed max-w-2xl font-light">
+                    {philosophySlides[activePhilosophy].subtext}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
             </div>
 
-            <div className="space-y-8 pt-6 border-t border-ink/10">
-              {approachItems.map((item, index) => (
-                <p key={index} className="text-ashen leading-relaxed md:text-lg">
-                  {item.description}
-                </p>
-              ))}
-            </div>
-          </motion.div>
+            {/* Right Nav Button */}
+            <button
+              onClick={() => setActivePhilosophy((prev) => (prev + 1) % philosophySlides.length)}
+              className="p-3 text-ink/30 hover:text-ink transition-colors duration-300 focus:outline-none"
+              aria-label="Next philosophy slide"
+            >
+              <ChevronRight className="w-7 h-7 md:w-8 md:h-8" strokeWidth={1} />
+            </button>
+          </div>
+
+          {/* Dots Pagination */}
+          <div className="flex items-center gap-2 mt-10 md:mt-12">
+            {philosophySlides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setActivePhilosophy(index)}
+                className={`h-1.5 rounded-full transition-all duration-500 ${
+                  activePhilosophy === index ? "w-8 bg-[#5A3728]" : "w-2 bg-ink/20 hover:bg-ink/40"
+                }`}
+                aria-label={`Go to philosophy slide ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Bottom Studio Tagline */}
+          <div className="mt-12 pt-8 border-t border-[#111111]/10 w-full max-w-md">
+            <span className="text-[10px] md:text-xs font-sans tracking-[0.25em] uppercase text-[#6A6A6A] font-medium block">
+              {philosophySlides[activePhilosophy].tagline}
+            </span>
+          </div>
+
         </div>
       </section>
 

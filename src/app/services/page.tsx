@@ -122,19 +122,26 @@ export default function ServicesPage() {
                 </div>
 
                 {/* 3. Image & Redirect Button Block (Right) */}
-                <div className="lg:col-span-4 flex items-center justify-end space-x-6">
-                  <div className="relative w-64 sm:w-80 h-40 sm:h-48 overflow-hidden rounded-sm bg-[#EAE8E4] flex-shrink-0">
+                <div className="lg:col-span-4 flex flex-col sm:flex-row items-center sm:justify-end gap-4 w-full">
+                  <div className="relative w-full sm:w-80 h-56 sm:h-48 overflow-hidden rounded-md bg-[#EAE8E4] flex-shrink-0 group/img">
                     <Image
                       src={service.image}
                       alt={service.title}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 768px) 150px, 200px"
+                      sizes="(max-width: 640px) 100vw, 320px"
                     />
+                    <Link
+                      href={service.href}
+                      className="absolute top-3 right-3 sm:hidden z-10 w-11 h-11 rounded-full bg-white/90 backdrop-blur-md border border-[#111111]/10 flex items-center justify-center text-[#111111] shadow-md transition-all duration-300 active:scale-95"
+                      title={service.linkText}
+                    >
+                      <ArrowUpRight size={18} strokeWidth={1.5} />
+                    </Link>
                   </div>
                   <Link
                     href={service.href}
-                    className="flex-shrink-0 w-12 h-12 rounded-full border border-[#111111]/10 flex items-center justify-center text-[#111111] bg-transparent group-hover:bg-[#111111] group-hover:text-white transition-all duration-500 hover:scale-105 active:scale-95"
+                    className="hidden sm:flex flex-shrink-0 w-12 h-12 rounded-full border border-[#111111]/10 items-center justify-center text-[#111111] bg-transparent group-hover:bg-[#111111] group-hover:text-white transition-all duration-500 hover:scale-105 active:scale-95"
                     title={service.linkText}
                   >
                     <ArrowUpRight size={20} strokeWidth={1.5} />

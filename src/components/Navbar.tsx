@@ -30,16 +30,16 @@ export default function Navbar() {
               <Image
                 src="/logo_new.png"
                 alt="PLAN Bë Architectural Design Studio"
-                width={200}
-                height={90}
+                width={220}
+                height={100}
                 priority
-                className="w-24 sm:w-28 md:w-32 lg:w-36 h-auto object-contain drop-shadow-[0_0_12px_rgba(255,255,255,0.85)] filter contrast-125"
+                className="w-28 sm:w-32 md:w-36 lg:w-40 h-auto object-contain drop-shadow-[0_0_12px_rgba(255,255,255,0.85)] filter contrast-125"
               />
             </div>
           </Link>
 
           {/* Exact Center: Floating Glassmorphic Pill Navbar */}
-          <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center px-4 py-1.5 rounded-full border border-black/10 bg-white/85 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.06)] overflow-hidden transition-all duration-300 pointer-events-auto z-20">
+          <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center px-6 py-2.5 rounded-full border border-black/10 bg-white/90 backdrop-blur-md shadow-[0_10px_35px_rgba(0,0,0,0.08)] overflow-hidden transition-all duration-300 pointer-events-auto z-20">
             
             {/* Subtle Blueprint Grid Pattern */}
             <div 
@@ -50,15 +50,15 @@ export default function Navbar() {
               }}
             />
 
-            <nav className="flex items-center space-x-1 relative z-10">
+            <nav className="flex items-center space-x-2 relative z-10">
               {navLinks.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="relative px-3.5 py-1.5 group transition-colors"
+                  className="relative px-4 py-2 group transition-colors"
                 >
                   <span
-                    className={`font-sans text-[10.5px] font-medium tracking-[0.2em] uppercase transition-colors duration-300 ${
+                    className={`font-sans text-[12px] font-medium tracking-[0.2em] uppercase transition-colors duration-300 ${
                       link.active
                         ? "text-ink font-semibold"
                         : "text-ink/70 hover:text-ink"
@@ -69,12 +69,12 @@ export default function Navbar() {
 
                   {/* Active Indicator Dot */}
                   {link.active && (
-                    <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-ink shadow-[0_0_4px_rgba(0,0,0,0.15)]" />
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-ink shadow-[0_0_4px_rgba(0,0,0,0.15)]" />
                   )}
 
                   {/* Hover line indicator */}
                   {!link.active && (
-                    <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-ink/50 transition-all duration-300 group-hover:w-3/5" />
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-ink/50 transition-all duration-300 group-hover:w-3/5" />
                   )}
                 </Link>
               ))}
@@ -82,7 +82,7 @@ export default function Navbar() {
               {/* CONTACT Pill Button */}
               <Link
                 href="/contact"
-                className="ml-2 px-5 py-1.5 rounded-full bg-[#E5E0D8]/90 hover:bg-white text-ink text-[10.5px] font-bold tracking-[0.2em] uppercase shadow-[0_2px_8px_rgba(0,0,0,0.08)] border border-white/60 transition-all duration-300 hover:scale-105 active:scale-95"
+                className="ml-3 px-6 py-2.5 rounded-full bg-[#E5E0D8]/95 hover:bg-white text-ink text-[12px] font-bold tracking-[0.2em] uppercase shadow-[0_2px_10px_rgba(0,0,0,0.08)] border border-white/70 transition-all duration-300 hover:scale-105 active:scale-95"
               >
                 CONTACT
               </Link>
