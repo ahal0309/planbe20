@@ -21,6 +21,10 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Plan Bē Architectural Design Studio | Home",
   description: "We seek inspiration in simplicity, finding harmony between architecture, nature, and everyday life.",
+  icons: {
+    icon: "/logo_new.jpeg",
+    apple: "/logo_new.jpeg",
+  },
 };
 
 export default function RootLayout({
