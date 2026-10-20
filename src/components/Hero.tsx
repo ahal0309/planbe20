@@ -11,10 +11,10 @@ const videos: { mp4: string; webm: string; poster?: string }[] = [
 ];
 
 const slides = [
-  { tagline: "Be Creative" },
-  { tagline: "Be Different" },
-  { tagline: "Be Sustainable" },
-  { tagline: "Be Inspired" },
+  { tagline: "Bë Creative" },
+  { tagline: "Bë Different" },
+  { tagline: "Bë Sustainable" },
+  { tagline: "Bë Inspired" },
 ];
 
 export default function Hero() {
@@ -215,7 +215,7 @@ export default function Hero() {
           <div className="pointer-events-auto flex flex-col items-start text-left">
             <h2 className="font-serif text-[2rem] leading-[1.1] sm:text-4xl md:text-5xl lg:text-[4.5rem] text-white tracking-tight font-light mb-6 sm:mb-8 md:mb-0 drop-shadow-[0_4px_28px_rgba(0,0,0,0.75)]">
               Design your way<br />
-              of being
+              of bëing
             </h2>
           </div>
 
@@ -225,10 +225,10 @@ export default function Hero() {
               <AnimatePresence mode="wait">
                 <motion.span
                   key={logicalIndex}
-                  initial={{ opacity: 0, y: 22 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -22 }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  initial={{ opacity: 0, filter: "blur(4px)" }}
+                  animate={{ opacity: 1, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, filter: "blur(4px)" }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
                   className="font-serif text-3xl sm:text-4xl text-white tracking-wide font-light whitespace-nowrap drop-shadow-[0_2px_18px_rgba(0,0,0,0.75)]"
                 >
                   {slides[logicalIndex].tagline}
