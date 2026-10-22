@@ -70,9 +70,27 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F9F6F0] w-full font-sans text-[#111111] overflow-hidden pt-32 pb-24 px-6 md:px-margin-desktop">
+    <main className="relative min-h-screen bg-[#F9F6F0] w-full font-sans text-[#111111] overflow-hidden pt-32 pb-24 px-6 md:px-margin-desktop">
+      {/* Top Right Palm Leaf Shadow Overlay */}
+      <div 
+        className="absolute top-0 right-0 w-[420px] md:w-[650px] lg:w-[750px] h-[420px] md:h-[650px] lg:h-[750px] pointer-events-none select-none z-0 opacity-45 mix-blend-multiply transition-opacity duration-700"
+        style={{
+          maskImage: "radial-gradient(ellipse at top right, black 55%, transparent 85%)",
+          WebkitMaskImage: "radial-gradient(ellipse at top right, black 55%, transparent 85%)",
+        }}
+      >
+        <Image
+          src="/leaf-shadow.jpg"
+          alt="Tropical leaf shadow"
+          fill
+          priority
+          className="object-cover object-top-right filter contrast-125"
+          sizes="(max-width: 768px) 420px, 750px"
+        />
+      </div>
+
       {/* 1. Hero Section */}
-      <div className="max-w-[1400px] mx-auto flex flex-col pt-12 md:pt-16 mb-16 md:mb-24">
+      <div className="relative z-10 max-w-[1400px] mx-auto flex flex-col pt-12 md:pt-16 mb-16 md:mb-24">
         <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-4xl">
           <span className="text-sm leading-[1.5] tracking-[0.2em] font-bold uppercase text-[#6A6A6A] mb-4 block">
             Who We Are
