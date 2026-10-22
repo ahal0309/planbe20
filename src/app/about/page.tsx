@@ -70,7 +70,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#E6DAC8] w-full font-sans text-[#111111] overflow-hidden pt-32 pb-24 px-6 md:px-margin-desktop">
+    <main className="min-h-screen bg-[#F9F6F0] w-full font-sans text-[#111111] overflow-hidden pt-32 pb-24 px-6 md:px-margin-desktop">
       {/* 1. Hero Section */}
       <div className="max-w-[1400px] mx-auto flex flex-col pt-12 md:pt-16 mb-16 md:mb-24">
         <motion.div initial="hidden" animate="visible" variants={fadeUp} className="max-w-4xl">
