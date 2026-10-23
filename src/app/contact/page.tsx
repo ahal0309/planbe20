@@ -338,30 +338,6 @@ export default function ContactPage() {
           </div>
         </div>
 
-        {/* Bottom CTA Block matching Services Page */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-          className="w-full bg-[#5A3728] text-white rounded-md p-10 md:p-16 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 shadow-sm mb-24"
-        >
-          <div className="max-w-2xl">
-            <h2 className="font-serif text-4xl md:text-6xl font-semibold mb-4 text-[#F7F5F2]">
-              Think. Plan.Bē
-            </h2>
-            <p className="text-[#E5E0D8] leading-relaxed font-light text-lg md:text-xl">
-              Whether you're building a home, developing a commercial project, or transforming an existing space, we partner with you to bring your vision to life through thoughtful design and meticulous execution.
-            </p>
-          </div>
-          <a
-            href="mailto:info@planbe.co.in"
-            className="flex-shrink-0 bg-[#F7F5F2] hover:bg-white text-[#3E2723] px-8 py-4 rounded-sm transition-all duration-300 font-sans text-sm font-bold tracking-[0.2em] uppercase shadow-md hover:scale-105 active:scale-95"
-          >
-            Start a Project
-          </a>
-        </motion.div>
-
         {/* FAQ Section */}
         <FaqSection />
 
