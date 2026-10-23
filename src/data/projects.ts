@@ -7,6 +7,7 @@ export interface ProjectData {
   year: string;
   heroImage: string;
   secondaryImage: string;
+  galleryImages?: string[];
   overviewHeading: string;
   overviewDescription: string;
   challenge: string;
@@ -25,6 +26,7 @@ export const projectsData: Record<string, ProjectData> = {
     year: "2024",
     heroImage: "/villa-sereno.jpg",
     secondaryImage: "/long_view.png",
+    galleryImages: ["/long_view.png", "/villa-sereno.jpg", "/akhil.png", "/rajasthan.png"],
     overviewHeading: "OVERVIEW",
     overviewDescription:
       "A refined contemporary residence in Kottayam, designed around natural light, spatial flow, and contextually grounded architecture.",
@@ -45,6 +47,7 @@ export const projectsData: Record<string, ProjectData> = {
     year: "2023",
     heroImage: "/glass-house.jpg",
     secondaryImage: "/entrance-01.jpg",
+    galleryImages: ["/entrance-01.jpg", "/glass-house.jpg", "/3-trees-banner.jpg", "/long_view.png"],
     overviewHeading: "OVERVIEW",
     overviewDescription:
       "An innovative corporate studio space that dissolves the boundary between workspace and exterior greenery.",
@@ -65,6 +68,7 @@ export const projectsData: Record<string, ProjectData> = {
     year: "2024",
     heroImage: "/3-trees-banner.jpg",
     secondaryImage: "/rajasthan.png",
+    galleryImages: ["/rajasthan.png", "/3-trees-banner.jpg", "/villa-sereno.jpg"],
     overviewHeading: "OVERVIEW",
     overviewDescription:
       "A warm minimalist interior environment curated with honest wood craftsmanship, bespoke detailing, and soothing textures.",
@@ -85,6 +89,7 @@ export const projectsData: Record<string, ProjectData> = {
     year: "2023",
     heroImage: "/entrance-01.jpg",
     secondaryImage: "/akhil.png",
+    galleryImages: ["/akhil.png", "/entrance-01.jpg", "/glass-house.jpg"],
     overviewHeading: "OVERVIEW",
     overviewDescription:
       "A dramatic arrival experience designed around water, tropical foliage, and monolithic stone thresholds.",
@@ -105,6 +110,7 @@ export const projectsData: Record<string, ProjectData> = {
     year: "2024",
     heroImage: "/ochre-5.jpg",
     secondaryImage: "/long_view.png",
+    galleryImages: ["/long_view.png", "/ochre-5.jpg", "/akhil.png"],
     overviewHeading: "OVERVIEW",
     overviewDescription:
       "An eco-sensitive hillside resort pavilion embedded gently into the undulating slopes of Wayanad.",

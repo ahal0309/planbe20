@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projectsData } from "@/data/projects";
+import ProjectImageSlider from "@/components/ProjectImageSlider";
 
 interface Props {
   params: Promise<{
@@ -79,18 +80,17 @@ export default async function ProjectDetailPage({ params }: Props) {
         </div>
       </section>
 
-      {/* 3. Mid-Page Full Width Architectural Perspective Image */}
+      {/* 3. Mid-Page Full Width Architectural Perspective Slider */}
       <section className="w-full px-6 md:px-margin-desktop pb-20 sm:pb-28">
         <div className="max-w-[1400px] mx-auto">
-          <div className="relative w-full h-[50vh] sm:h-[65vh] md:h-[75vh] overflow-hidden rounded-sm shadow-sm bg-[#EAE8E4]">
-            <Image
-              src={project.secondaryImage}
-              alt={`${project.title} Architectural Detail`}
-              fill
-              className="object-cover"
-              sizes="(max-width: 1400px) 100vw, 1400px"
-            />
-          </div>
+          <ProjectImageSlider
+            images={
+              project.galleryImages && project.galleryImages.length > 0
+                ? project.galleryImages
+                : [project.secondaryImage]
+            }
+            projectTitle={project.title}
+          />
         </div>
       </section>
 
