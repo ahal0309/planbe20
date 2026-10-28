@@ -73,7 +73,7 @@ export default function Footer() {
             </h4>
             
             <a 
-              href="https://share.google/xrNqoxEYLSRf465o6"
+              href="https://maps.app.goo.gl/Z3ZjR9WyYbu71oW19"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-ashen leading-relaxed mb-6 max-w-[250px] hover:text-ochre transition-colors block"

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { StaggerText } from "@/components/ui/stagger-text";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import KineticGrid from "@/components/ui/kinetic-grid";
 
 export default function AboutPage() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -135,37 +136,42 @@ export default function AboutPage() {
           </div>
         </motion.div>
 
-        {/* 3. Our Philosophy Card */}
+        {/* 3. Our Philosophy Card with Interactive Kinetic Grid */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeUp}
-          className="group w-full bg-white border border-[#111111]/5 rounded-md p-8 md:p-12 hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:border-[#111111]/10 transition-all duration-700"
+          className="w-full"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-            <div className="lg:col-span-4 flex flex-col justify-start">
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium text-[#111111] leading-tight">
-                Our Philosophy
-              </h2>
-              <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#8FA3A6] mt-3 block">
-                Design Approach & Core Beliefs
-              </span>
-            </div>
+          <KineticGrid
+            globalColor="architectural"
+            className="group w-full border border-[#111111]/5 rounded-md p-8 md:p-12 hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:border-[#111111]/10 transition-all duration-700 shadow-sm"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start relative z-10">
+              <div className="lg:col-span-4 flex flex-col justify-start">
+                <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium text-[#111111] leading-tight">
+                  Our Philosophy
+                </h2>
+                <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#8FA3A6] mt-3 block">
+                  Design Approach & Core Beliefs
+                </span>
+              </div>
 
-            <div className="lg:col-span-8 flex flex-col justify-center">
-              <p className="text-xl sm:text-2xl md:text-3xl font-light leading-relaxed text-[#111111] mb-6 md:mb-8 text-left font-serif">
-                We seek inspiration in simplicity, finding harmony between architecture, nature, and everyday life.
-              </p>
-              <div className="space-y-6">
-                {approachItems.map((item, index) => (
-                  <p key={index} className="text-base sm:text-lg md:text-xl text-[#6A6A6A] leading-relaxed text-left font-light">
-                    {item.description}
-                  </p>
-                ))}
+              <div className="lg:col-span-8 flex flex-col justify-center">
+                <p className="text-xl sm:text-2xl md:text-3xl font-light leading-relaxed text-[#111111] mb-6 md:mb-8 text-left font-serif">
+                  We seek inspiration in simplicity, finding harmony between architecture, nature, and everyday life.
+                </p>
+                <div className="space-y-6">
+                  {approachItems.map((item, index) => (
+                    <p key={index} className="text-base sm:text-lg md:text-xl text-[#6A6A6A] leading-relaxed text-left font-light">
+                      {item.description}
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
+          </KineticGrid>
         </motion.div>
 
         {/* 4. Our Vision Card */}

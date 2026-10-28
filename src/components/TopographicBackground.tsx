@@ -14,6 +14,11 @@ export default function TopographicBackground() {
 
   if (!mounted) return null;
 
+  // On Home and About pages, the contour lines are removed in favor of the interactive KineticGrid
+  if (pathname === "/" || pathname === "/about") {
+    return <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#FAFAFA]" />;
+  }
+
   return (
     <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#FAFAFA]">
       <motion.svg
@@ -34,8 +39,7 @@ export default function TopographicBackground() {
         xmlns="http://www.w3.org/2000/svg"
       >
         {/* Soft, warm architectural gray/terracotta blend */}
-        <g stroke="#8B6B5D" strokeWidth="1.5" fill="none"> {/* Slightly darker terracotta and slightly thicker lines for visibility */}
-
+        <g stroke="#8B6B5D" strokeWidth="1.5" fill="none">
           {/* Main Flowing Topographic Curves */}
           <path d="M-200,200 C300,300 600,-50 1000,350 C1400,750 1600,550 1800,950" />
           <path d="M-200,250 C300,350 600,0 1000,400 C1400,800 1600,600 1800,1000" />

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Mail, Phone, MessageCircle, ArrowRight } from "lucide-react";
+import { Mail, Phone, MessageCircle, ArrowRight, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { StaggerText } from "@/components/ui/stagger-text";
@@ -103,7 +103,7 @@ export default function ContactPage() {
                     Our Studio
                   </span>
                   <a
-                    href="https://share.google/xrNqoxEYLSRf465o6"
+                    href="https://maps.app.goo.gl/Z3ZjR9WyYbu71oW19"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-serif text-2xl md:text-3xl lg:text-4xl text-[#111111] leading-snug hover:text-[#5A3728] transition-colors block"
@@ -340,6 +340,56 @@ export default function ContactPage() {
 
         {/* FAQ Section */}
         <FaqSection />
+
+        {/* Map Preview Section */}
+        <div className="relative w-full mt-24">
+          {/* Header / Info bar above map */}
+          <div className="mb-8">
+            <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#8FA3A6] block mb-2">
+              Studio Location
+            </span>
+            <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#111111]">
+              Find Us in <span className="italic font-light text-[#5A3728]">Kaloor, Cochin</span>
+            </h3>
+          </div>
+
+          {/* Embedded Interactive Map Preview */}
+          <div className="relative w-full h-[420px] sm:h-[480px] md:h-[520px] rounded-md border border-[#111111]/10 shadow-[0_4px_24px_rgba(0,0,0,0.04)] overflow-hidden bg-[#ECE8DF]">
+            <iframe
+              title="Plan Be Architectural Design Studio Location Map"
+              src="https://maps.google.com/maps?q=PlanB+design+studio,10.0004047,76.2906247&hl=en&z=17&output=embed"
+              className="w-full h-full border-0 filter contrast-[1.03] saturate-[0.95]"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+
+            {/* Location Float Badge */}
+            <div className="absolute bottom-6 left-6 md:left-8 max-w-[340px] bg-white/95 backdrop-blur-md p-5 rounded-md border border-[#111111]/10 shadow-lg pointer-events-auto">
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-full bg-[#5A3728] text-white flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <MapPin className="w-4 h-4" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-serif text-base text-[#111111] font-medium leading-snug">
+                    Plan Bē Design Studio
+                  </span>
+                  <p className="text-xs text-[#6A6A6A] font-light mt-1 leading-relaxed">
+                    First Floor, Velleparambil building, Perandoor Rd, Kaloor, Kochi, Kerala 682017
+                  </p>
+                  <a
+                    href="https://maps.app.goo.gl/Z3ZjR9WyYbu71oW19"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 text-[11px] font-bold tracking-[0.15em] uppercase text-[#5A3728] hover:underline inline-flex items-center gap-1.5"
+                  >
+                    Open in Maps <ArrowRight className="w-3 h-3" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
     </main>

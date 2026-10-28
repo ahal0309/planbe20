@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     q: "Where is Plan Be Design Studio located?",
-    a: "Our design studio is based in Kaloor, Kochi Kerala, India. We primarily work with clients in Kerala and undertake projects at locations based on the requirements of each project. You can find us on Google Maps by clicking [here](https://goo.gl/maps/piH3V18uJTk). We welcome you to visit us by appointment.\nCoordinates: 10°00'01.5\"N 76°17'26.2\"E"
+    a: "Our design studio is based in Kaloor, Kochi Kerala, India. We primarily work with clients in Kerala and undertake projects at locations based on the requirements of each project. You can find us on Google Maps by clicking [here](https://maps.app.goo.gl/Z3ZjR9WyYbu71oW19). We welcome you to visit us by appointment.\nCoordinates: 10°00'01.5\"N 76°17'26.2\"E"
   },
   {
     q: "What type of projects do you undertake?",
