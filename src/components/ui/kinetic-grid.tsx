@@ -178,22 +178,22 @@ export default function KineticGrid({
           ripple: "255,255,255",
         },
         architectural: {
-          bg: "#F9F6F0",
-          dotColor: "rgba(90,55,40,0.08)",
-          lineBase: { r: 90, g: 55, b: 40, a: 0.14 },
-          lineActive: { r: 90, g: 55, b: 40, a: 0.85 },
-          nodeBase: { r: 90, g: 55, b: 40, a: 0.25 },
-          nodeActive: { r: 90, g: 55, b: 40, a: 0.95 },
+          bg: "#FFFFFF",
+          dotColor: "rgba(90,55,40,0.035)",
+          lineBase: { r: 90, g: 55, b: 40, a: 0.07 },
+          lineActive: { r: 90, g: 55, b: 40, a: 0.45 },
+          nodeBase: { r: 90, g: 55, b: 40, a: 0.12 },
+          nodeActive: { r: 90, g: 55, b: 40, a: 0.65 },
           glow: "90,55,40",
           ripple: "139,107,93",
         },
         subtle: {
           bg: "transparent",
-          dotColor: "rgba(90,55,40,0.05)",
-          lineBase: { r: 90, g: 55, b: 40, a: 0.10 },
-          lineActive: { r: 90, g: 55, b: 40, a: 0.65 },
-          nodeBase: { r: 90, g: 55, b: 40, a: 0.18 },
-          nodeActive: { r: 90, g: 55, b: 40, a: 0.8 },
+          dotColor: "rgba(90,55,40,0.03)",
+          lineBase: { r: 90, g: 55, b: 40, a: 0.05 },
+          lineActive: { r: 90, g: 55, b: 40, a: 0.35 },
+          nodeBase: { r: 90, g: 55, b: 40, a: 0.10 },
+          nodeActive: { r: 90, g: 55, b: 40, a: 0.5 },
           glow: "90,55,40",
           ripple: "139,107,93",
         },
@@ -427,7 +427,7 @@ export default function KineticGrid({
     globalColor === "monochrome"
       ? "bg-[#000000]"
       : globalColor === "architectural"
-      ? "bg-[#F9F6F0]"
+      ? "bg-white"
       : globalColor === "subtle"
       ? "bg-transparent"
       : "bg-[#161618]";
