@@ -71,9 +71,20 @@ export default function AboutPage() {
 
   return (
     <main className="relative min-h-screen bg-[#F9F6F0] w-full font-sans text-[#111111] overflow-hidden pt-32 pb-24 px-6 md:px-margin-desktop">
-      {/* Top Right Palm Leaf Shadow Overlay */}
-      <div 
-        className="absolute top-0 right-0 w-[420px] md:w-[650px] lg:w-[750px] h-[420px] md:h-[650px] lg:h-[750px] pointer-events-none select-none z-0 opacity-45 mix-blend-multiply transition-opacity duration-700"
+      {/* Top Right Palm Leaf Shadow Overlay with Gentle Breeze Animation */}
+      <motion.div 
+        animate={{
+          x: [0, 8, -4, 6, 0],
+          y: [0, -6, 5, -3, 0],
+          rotate: [0, 1.2, -0.8, 1, 0],
+          scale: [1, 1.02, 0.99, 1.01, 1],
+        }}
+        transition={{
+          duration: 14,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute top-0 right-0 w-[420px] md:w-[650px] lg:w-[750px] h-[420px] md:h-[650px] lg:h-[750px] pointer-events-none select-none z-0 opacity-45 mix-blend-multiply origin-top-right"
         style={{
           maskImage: "radial-gradient(ellipse at top right, black 55%, transparent 85%)",
           WebkitMaskImage: "radial-gradient(ellipse at top right, black 55%, transparent 85%)",
@@ -87,7 +98,7 @@ export default function AboutPage() {
           className="object-cover object-top-right filter contrast-125"
           sizes="(max-width: 768px) 420px, 750px"
         />
-      </div>
+      </motion.div>
 
       {/* 1. Hero Section */}
       <div className="relative z-10 max-w-[1400px] mx-auto flex flex-col pt-12 md:pt-16 mb-16 md:mb-24">
