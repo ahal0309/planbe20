@@ -14,11 +14,6 @@ export default function TopographicBackground() {
 
   if (!mounted) return null;
 
-  // On Home and About pages, the contour lines are removed in favor of the interactive KineticGrid
-  if (pathname === "/" || pathname === "/about") {
-    return <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#FAFAFA]" />;
-  }
-
   return (
     <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#FAFAFA]">
       <motion.svg
