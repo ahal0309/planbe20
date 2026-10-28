@@ -377,7 +377,7 @@ export default function HomePage() {
           Design Your Way of Being.
         </h2>
         <Link
-          href="mailto:contact@planbe.studio"
+          href="/contact#inquiry"
           className="inline-flex text-sm leading-[1.5] tracking-[0.2em] font-bold uppercase border-b-2 border-ink pb-1 hover:text-ochre hover:border-ochre transition-colors duration-300"
         >
           Request a Consultation →

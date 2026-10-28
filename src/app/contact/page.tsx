@@ -97,11 +97,12 @@ export default function ContactPage() {
 
         {/* Contact Main Card */}
         <motion.div
+          id="inquiry"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeUp}
-          className="w-full bg-white border border-[#111111]/5 rounded-md p-8 md:p-14 hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:border-[#111111]/10 transition-all duration-700 mb-24"
+          className="w-full bg-white border border-[#111111]/5 rounded-md p-8 md:p-14 hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:border-[#111111]/10 transition-all duration-700 mb-24 scroll-mt-36"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
