@@ -3,11 +3,11 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 
-const videos: { mp4: string; webm: string; poster?: string }[] = [
-  { mp4: "/hero-video-1.mp4", webm: "/hero-video-1.mp4" },
-  { mp4: "/hero-video-2.mp4", webm: "/hero-video-2.mp4" },
-  { mp4: "/hero-video-3.mp4", webm: "/hero-video-3.mp4" },
-  { mp4: "/hero-video-4.mp4", webm: "/hero-video-4.mp4" },
+const videos: { mp4: string; poster?: string }[] = [
+  { mp4: "/hero-video-1.mp4" },
+  { mp4: "/hero-video-2.mp4" },
+  { mp4: "/hero-video-3.mp4" },
+  { mp4: "/hero-video-4.mp4" },
 ];
 
 const slides = [
@@ -159,24 +159,27 @@ export default function Hero() {
       className="relative w-full h-[100dvh] min-h-[640px] overflow-hidden bg-[#111111] select-none"
     >
       {/* Full-Screen Video Background */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 overflow-hidden bg-black">
         {slotAIndex !== -1 && (
           <video
             ref={videoRefA}
             key={`video-slot-a-${slotAIndex}`}
             muted
             playsInline
+            autoPlay
+            preload="auto"
+            disablePictureInPicture
             onTimeUpdate={handleTimeUpdateA}
             onEnded={handleEndedA}
             onPlaying={handlePlayingA}
             poster={videos[slotAIndex].poster}
-            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out will-change-[opacity]"
             style={{
               opacity: activeSlot === "A" ? 1 : 0,
               zIndex: activeSlot === "A" ? 1 : 0,
+              transform: "translateZ(0)",
             }}
           >
-            <source src={videos[slotAIndex].webm} type="video/webm" />
             <source src={videos[slotAIndex].mp4} type="video/mp4" />
           </video>
         )}
@@ -187,17 +190,20 @@ export default function Hero() {
             key={`video-slot-b-${slotBIndex}`}
             muted
             playsInline
+            autoPlay
+            preload="auto"
+            disablePictureInPicture
             onTimeUpdate={handleTimeUpdateB}
             onEnded={handleEndedB}
             onPlaying={handlePlayingB}
             poster={videos[slotBIndex].poster}
-            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out will-change-[opacity]"
             style={{
               opacity: activeSlot === "B" ? 1 : 0,
               zIndex: activeSlot === "B" ? 1 : 0,
+              transform: "translateZ(0)",
             }}
           >
-            <source src={videos[slotBIndex].webm} type="video/webm" />
             <source src={videos[slotBIndex].mp4} type="video/mp4" />
           </video>
         )}
