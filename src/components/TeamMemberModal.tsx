@@ -90,8 +90,8 @@ export default function TeamMemberModal({ member, onClose }: TeamMemberModalProp
               {member.name}
             </h2>
 
-            {/* Role & Company (Teal Blue / Uppercase tracking) */}
-            <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-[#0077B6] mb-6 block">
+            {/* Role & Company (Studio Brown / Uppercase tracking) */}
+            <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-[#8B6B5D] mb-6 block">
               {member.role} {member.company && `| ${member.company}`}
             </span>
 
@@ -106,7 +106,7 @@ export default function TeamMemberModal({ member, onClose }: TeamMemberModalProp
                 <ul className="space-y-2">
                   {member.highlights.map((item, idx) => (
                     <li key={idx} className="flex items-start gap-2.5 text-sm sm:text-[15px] text-[#444444] leading-relaxed">
-                      <span className="text-[#0077B6] text-lg leading-none mt-0.5">•</span>
+                      <span className="text-[#8B6B5D] text-lg leading-none mt-0.5">•</span>
                       <span>{item}</span>
                     </li>
                   ))}

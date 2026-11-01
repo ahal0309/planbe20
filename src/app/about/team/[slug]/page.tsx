@@ -26,7 +26,7 @@ export default async function TeamMemberPage({ params }: { params: Promise<{ slu
         <div className="mb-10 sm:mb-14">
           <Link
             href="/about#team"
-            className="group inline-flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-[#0077B6] hover:text-[#111111] transition-colors"
+            className="group inline-flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-[#8B6B5D] hover:text-[#111111] transition-colors"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span>BACK TO TEAM</span>
@@ -69,8 +69,8 @@ export default async function TeamMemberPage({ params }: { params: Promise<{ slu
               {member.name}
             </h1>
 
-            {/* Role & Company in Teal Blue */}
-            <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-[#0077B6] mb-8 block">
+            {/* Role & Company in Studio Brown */}
+            <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-[#8B6B5D] mb-8 block">
               {member.role} {member.company && `| ${member.company}`}
             </span>
 
@@ -85,7 +85,7 @@ export default async function TeamMemberPage({ params }: { params: Promise<{ slu
                 <ul className="space-y-3">
                   {member.highlights.map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3 text-sm sm:text-base text-[#444444] leading-relaxed">
-                      <span className="text-[#0077B6] text-lg leading-none mt-0.5">•</span>
+                      <span className="text-[#8B6B5D] text-lg leading-none mt-0.5">•</span>
                       <span>{item}</span>
                     </li>
                   ))}
