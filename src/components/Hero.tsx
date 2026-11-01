@@ -1,13 +1,13 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { useRef, useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const videos: { mp4: string; poster?: string }[] = [
-  { mp4: "/hero-video-1.mp4" },
-  { mp4: "/hero-video-2.mp4" },
-  { mp4: "/hero-video-3.mp4" },
-  { mp4: "/hero-video-4.mp4" },
+const videos = [
+  { src: "/hero-video-1.mp4" },
+  { src: "/hero-video-2.mp4" },
+  { src: "/hero-video-3.mp4" },
+  { src: "/hero-video-4.mp4" },
 ];
 
 const slides = [
@@ -18,206 +18,88 @@ const slides = [
 ];
 
 export default function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
-  // Active slot can be 'A' or 'B'
-  const [activeSlot, setActiveSlot] = useState<"A" | "B">("A");
+  // Smoothly switch active slide with hardware-synchronized single-active video playback
+  const goToSlide = useCallback((index: number) => {
+    setActiveIndex(index);
 
-  // Video indices loaded in each slot. -1 means no video is loaded.
-  const [slotAIndex, setSlotAIndex] = useState<number>(0);
-  const [slotBIndex, setSlotBIndex] = useState<number>(-1);
+    const prevIndex = activeIndex;
+    const nextVideo = videoRefs.current[index];
 
-  // Playback states for each slot
-  const [isPlayingA, setIsPlayingA] = useState<boolean>(true);
-  const [isPlayingB, setIsPlayingB] = useState<boolean>(false);
-
-  // Logical index for the slide (0 to 3) to sync text and dots
-  const [logicalIndex, setLogicalIndex] = useState<number>(0);
-
-  const videoRefA = useRef<HTMLVideoElement>(null);
-  const videoRefB = useRef<HTMLVideoElement>(null);
-  const transitionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
-  // Synchronize playing states with video element playback
-  useEffect(() => {
-    if (isPlayingA && videoRefA.current) {
-      videoRefA.current.play().catch((err) => console.log("Play A error:", err));
-    } else if (!isPlayingA && videoRefA.current) {
-      videoRefA.current.pause();
+    // Start playing the incoming video immediately
+    if (nextVideo) {
+      nextVideo.currentTime = 0;
+      nextVideo.play().catch(() => {});
     }
-  }, [isPlayingA, slotAIndex]);
 
+    // Delay pausing the previous video until the 1000ms crossfade completes
+    // so the outgoing frame doesn't freeze abruptly mid-fade
+    setTimeout(() => {
+      videoRefs.current.forEach((vid, i) => {
+        if (!vid || i === index) return;
+        vid.pause();
+      });
+    }, 1000);
+  }, [activeIndex]);
+
+  // When active video ends, advance to next video seamlessly
+  const handleEnded = useCallback((index: number) => {
+    const nextIndex = (index + 1) % videos.length;
+    goToSlide(nextIndex);
+  }, [goToSlide]);
+
+  // Initial playback: only start the first video, keep others idle
   useEffect(() => {
-    if (isPlayingB && videoRefB.current) {
-      videoRefB.current.play().catch((err) => console.log("Play B error:", err));
-    } else if (!isPlayingB && videoRefB.current) {
-      videoRefB.current.pause();
+    const firstVideo = videoRefs.current[0];
+    if (firstVideo) {
+      firstVideo.currentTime = 0;
+      firstVideo.play().catch(() => {});
     }
-  }, [isPlayingB, slotBIndex]);
-
-  // Clean up timeouts on unmount
-  useEffect(() => {
-    return () => {
-      if (transitionTimeoutRef.current) {
-        clearTimeout(transitionTimeoutRef.current);
-      }
-    };
   }, []);
 
-  // Preloading check
-  const checkPreload = (
-    currentTime: number,
-    duration: number,
-    currentSlotIdx: number,
-    otherSlotIdx: number,
-    setOtherSlotIdx: (idx: number) => void
-  ) => {
-    if (!duration) return;
-    const timeRemaining = duration - currentTime;
-
-    // When less than 4 seconds remaining, preload the next video
-    if (timeRemaining < 4 && otherSlotIdx === -1) {
-      const nextIdx = (currentSlotIdx + 1) % videos.length;
-      setOtherSlotIdx(nextIdx);
-    }
-  };
-
-  const handleTimeUpdateA = (e: React.SyntheticEvent<HTMLVideoElement>) => {
-    const video = e.currentTarget;
-    checkPreload(video.currentTime, video.duration, slotAIndex, slotBIndex, setSlotBIndex);
-  };
-
-  const handleTimeUpdateB = (e: React.SyntheticEvent<HTMLVideoElement>) => {
-    const video = e.currentTarget;
-    checkPreload(video.currentTime, video.duration, slotBIndex, slotAIndex, setSlotAIndex);
-  };
-
-  // Starts playback in the upcoming slot; actual activeSlot swap occurs onPlaying
-  const triggerTransition = (fromSlot: "A" | "B", targetIndex?: number) => {
-    if (transitionTimeoutRef.current) {
-      clearTimeout(transitionTimeoutRef.current);
-    }
-
-    if (fromSlot === "A") {
-      const nextIdx = targetIndex !== undefined ? targetIndex : ((slotAIndex + 1) % videos.length);
-      setSlotBIndex(nextIdx);
-      setIsPlayingB(true);
-    } else {
-      const nextIdx = targetIndex !== undefined ? targetIndex : ((slotBIndex + 1) % videos.length);
-      setSlotAIndex(nextIdx);
-      setIsPlayingA(true);
-    }
-  };
-
-  const handleEndedA = () => {
-    triggerTransition("A");
-  };
-
-  const handleEndedB = () => {
-    triggerTransition("B");
-  };
-
-  const transitionToSlide = (nextIndex: number) => {
-    if (nextIndex === logicalIndex) return;
-    triggerTransition(activeSlot, nextIndex);
-  };
-
-  // Swap active Slot and fade it in ONLY when frames are active (onPlaying)
-  const handlePlayingA = () => {
-    if (activeSlot === "B" && slotAIndex !== -1) {
-      setActiveSlot("A");
-      setLogicalIndex(slotAIndex);
-      transitionTimeoutRef.current = setTimeout(() => {
-        setIsPlayingB(false);
-        setSlotBIndex(-1);
-      }, 1000);
-    }
-  };
-
-  const handlePlayingB = () => {
-    if (activeSlot === "A" && slotBIndex !== -1) {
-      setActiveSlot("B");
-      setLogicalIndex(slotBIndex);
-      transitionTimeoutRef.current = setTimeout(() => {
-        setIsPlayingA(false);
-        setSlotAIndex(-1);
-      }, 1000);
-    }
-  };
-
   return (
-    <section 
-      ref={containerRef} 
-      className="relative w-full h-[100dvh] min-h-[640px] overflow-hidden bg-[#111111] select-none"
-    >
-      {/* Full-Screen Video Background */}
-      <div className="absolute inset-0 z-0 overflow-hidden bg-black">
-        {slotAIndex !== -1 && (
-          <video
-            ref={videoRefA}
-            key={`video-slot-a-${slotAIndex}`}
-            muted
-            playsInline
-            autoPlay
-            preload="auto"
-            disablePictureInPicture
-            onTimeUpdate={handleTimeUpdateA}
-            onEnded={handleEndedA}
-            onPlaying={handlePlayingA}
-            poster={videos[slotAIndex].poster}
-            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out will-change-[opacity]"
-            style={{
-              opacity: activeSlot === "A" ? 1 : 0,
-              zIndex: activeSlot === "A" ? 1 : 0,
-              transform: "translateZ(0)",
-            }}
-          >
-            <source src={videos[slotAIndex].mp4} type="video/mp4" />
-          </video>
-        )}
+    <section className="relative w-full h-[100dvh] min-h-[640px] overflow-hidden bg-[#111111] select-none">
+      {/* Pre-mounted Seamless Video Backgrounds with GPU layer isolation */}
+      <div className="absolute inset-0 z-0 overflow-hidden bg-black [transform:translate3d(0,0,0)] [backface-visibility:hidden]">
+        {videos.map((vid, index) => {
+          const isActive = index === activeIndex;
 
-        {slotBIndex !== -1 && (
-          <video
-            ref={videoRefB}
-            key={`video-slot-b-${slotBIndex}`}
-            muted
-            playsInline
-            autoPlay
-            preload="auto"
-            disablePictureInPicture
-            onTimeUpdate={handleTimeUpdateB}
-            onEnded={handleEndedB}
-            onPlaying={handlePlayingB}
-            poster={videos[slotBIndex].poster}
-            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out will-change-[opacity]"
-            style={{
-              opacity: activeSlot === "B" ? 1 : 0,
-              zIndex: activeSlot === "B" ? 1 : 0,
-              transform: "translateZ(0)",
-            }}
-          >
-            <source src={videos[slotBIndex].mp4} type="video/mp4" />
-          </video>
-        )}
-        
+          return (
+            <video
+              key={vid.src}
+              ref={(el) => {
+                videoRefs.current[index] = el;
+              }}
+              src={vid.src}
+              muted
+              playsInline
+              autoPlay={index === 0}
+              preload="auto"
+              disablePictureInPicture
+              onEnded={() => handleEnded(index)}
+              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out will-change-[opacity]"
+              style={{
+                opacity: isActive ? 1 : 0,
+                zIndex: isActive ? 2 : 1,
+                pointerEvents: "none",
+                transform: "translate3d(0, 0, 0)",
+                backfaceVisibility: "hidden",
+              }}
+            />
+          );
+        })}
+
         {/* Dark Overlays for Text Readability & Video Contrast */}
-        <div className="absolute inset-0 bg-black/35 z-10 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 z-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-black/35 z-10 pointer-events-none [transform:translate3d(0,0,0)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 z-10 pointer-events-none [transform:translate3d(0,0,0)]" />
       </div>
 
       {/* Main Content Area */}
       <div className="relative z-20 w-full h-full px-6 sm:px-10 md:px-14 lg:px-16 pb-14 sm:pb-18 md:pb-20 flex flex-col justify-end pointer-events-none">
         <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-12">
-          
-          {/* Bottom-Left Headline with Balanced Refined Font Size */}
+          {/* Bottom-Left Headline */}
           <div className="pointer-events-auto flex flex-col items-start text-left">
             <h2 className="font-serif text-[2rem] leading-[1.1] sm:text-4xl md:text-5xl lg:text-[4.5rem] text-white tracking-tight font-light mb-6 sm:mb-8 md:mb-0 drop-shadow-[0_4px_28px_rgba(0,0,0,0.75)]">
               Design your way<br />
@@ -230,14 +112,14 @@ export default function Hero() {
             <div className="overflow-hidden min-h-[60px] flex items-end">
               <AnimatePresence mode="wait">
                 <motion.span
-                  key={logicalIndex}
+                  key={activeIndex}
                   initial={{ opacity: 0, filter: "blur(4px)" }}
                   animate={{ opacity: 1, filter: "blur(0px)" }}
                   exit={{ opacity: 0, filter: "blur(4px)" }}
                   transition={{ duration: 0.6, ease: "easeInOut" }}
                   className="font-serif text-3xl sm:text-4xl text-white tracking-wide font-light whitespace-nowrap drop-shadow-[0_2px_18px_rgba(0,0,0,0.75)]"
                 >
-                  {slides[logicalIndex].tagline}
+                  {slides[activeIndex].tagline}
                 </motion.span>
               </AnimatePresence>
             </div>
@@ -248,11 +130,11 @@ export default function Hero() {
       {/* Bottom Center: 4 Horizontal Slider Indicators */}
       <div className="absolute bottom-5 sm:bottom-7 left-1/2 -translate-x-1/2 flex items-center gap-2.5 sm:gap-3.5 z-30 pointer-events-auto">
         {slides.map((_, index) => {
-          const isActive = index === logicalIndex;
+          const isActive = index === activeIndex;
           return (
             <button
               key={index}
-              onClick={() => transitionToSlide(index)}
+              onClick={() => goToSlide(index)}
               aria-label={`Go to slide ${index + 1}`}
               className="p-1 focus:outline-none cursor-pointer group"
             >

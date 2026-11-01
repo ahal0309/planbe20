@@ -28,3 +28,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# screen recordings & backup video source
+Recording*.mp4
+public/original_videos/

@@ -1,13 +1,17 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { StaggerText } from "@/components/ui/stagger-text";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
+import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
+import { teamMembers, TeamMember } from "@/data/team";
+import TeamMemberModal from "@/components/TeamMemberModal";
 
 export default function AboutPage() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
   const scroll = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
@@ -39,33 +43,6 @@ export default function AboutPage() {
       title: "Context & Craftsmanship",
       description:
         "Our design process is guided by context, craftsmanship, and long-term value. Rather than following trends, we focus on creating meaningful spaces with clarity, purpose, and a strong connection to their surroundings—spaces that remain relevant and enriching for years to come.",
-    },
-  ];
-
-  const teamMembers = [
-    {
-      name: "Ar. Bibite Joy",
-      role: "Founder & Principal Architect",
-    },
-    {
-      name: "Ar. Jeffin Kunjeria Varghese",
-      role: "Associate Architect",
-    },
-    {
-      name: "Ar. Jinsamol Reji",
-      role: "Interior Design Head",
-    },
-    {
-      name: "Ar. Anil Venugopal",
-      role: "Visualisation Head",
-    },
-    {
-      name: "Ar. Yadhu Krishnan",
-      role: "Consulting Architect",
-    },
-    {
-      name: "Ar. Arun Thobias",
-      role: "Junior Architect",
     },
   ];
 
@@ -253,42 +230,62 @@ export default function AboutPage() {
             >
               {teamMembers.map((member, index) => (
                 <motion.div
-                  key={index}
+                  key={member.slug}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex flex-col group min-w-[280px] sm:min-w-[320px] max-w-[320px] snap-start shrink-0"
+                  onClick={() => setSelectedMember(member)}
+                  className="flex flex-col group min-w-[280px] sm:min-w-[320px] max-w-[320px] snap-start shrink-0 cursor-pointer"
                 >
-                {/* Blueprint Drafting Style Placeholder Image */}
-                <div className="w-full aspect-[3/4] bg-[#EAE8E4] border border-white/5 flex items-center justify-center relative overflow-hidden mb-5 rounded-sm transition-colors duration-500 group-hover:bg-[#F7F5F2]">
-                  <svg
-                    width="60"
-                    height="60"
-                    viewBox="0 0 60 60"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="opacity-30 stroke-[#8B6B5D] transition-opacity duration-300 group-hover:opacity-45"
-                    strokeWidth="1"
-                  >
-                    <rect x="5" y="5" width="50" height="50" strokeDasharray="3 3" />
-                    <line x1="5" y1="5" x2="55" y2="55" strokeDasharray="3 3" />
-                    <line x1="55" y1="5" x2="5" y2="55" strokeDasharray="3 3" />
-                  </svg>
-                </div>
+                  {/* Portrait Photograph with Rounded Corners - Blank / Placeholder */}
+                  <div className="w-full aspect-[4/5] bg-[#2E1D19] border border-white/10 flex items-center justify-center relative overflow-hidden mb-5 rounded-2xl md:rounded-3xl shadow-lg transition-transform duration-500 group-hover:-translate-y-1">
+                    {member.image ? (
+                      <Image
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover object-center grayscale contrast-110 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700"
+                        sizes="320px"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-[#35211D] to-[#251714] text-white/40 group-hover:text-white/80 transition-colors duration-500">
+                        <div className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center mb-3 bg-white/5">
+                          <span className="font-serif text-2xl tracking-widest text-[#E5E0D8]/70">
+                            {member.name.replace(/^Ar\.\s*/, '').split(' ').map(n => n[0]).slice(0, 2).join('')}
+                          </span>
+                        </div>
+                        <span className="text-[10px] uppercase tracking-[0.25em] font-medium text-white/30">Plan Bē</span>
+                      </div>
+                    )}
 
-                <h3 className="font-serif text-2xl font-semibold text-white group-hover:text-[#E5E0D8] transition-colors duration-300">
-                  {member.name}
-                </h3>
-                <span className="text-xs font-bold tracking-[0.15em] uppercase text-[#E5E0D8]/70 mt-1.5 block">
-                  {member.role}
-                </span>
-              </motion.div>
+                    {/* Subtle Hover Overlay with Arrow */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-5">
+                      <span className="text-xs font-semibold tracking-[0.2em] uppercase text-white/90">VIEW BIO</span>
+                      <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white">
+                        <ArrowUpRight className="w-4 h-4" />
+                      </div>
+                    </div>
+                  </div>
+
+                  <h3 className="font-serif text-2xl font-semibold text-white group-hover:text-[#E5E0D8] transition-colors duration-300">
+                    {member.name}
+                  </h3>
+                  <span className="text-xs font-bold tracking-[0.15em] uppercase text-[#E5E0D8]/70 mt-1.5 block">
+                    {member.role}
+                  </span>
+                </motion.div>
               ))}
             </div>
           </div>
         </div>
       </section>
+
+      {/* Interactive Team Member Bio Modal matching reference screenshot */}
+      <TeamMemberModal
+        member={selectedMember}
+        onClose={() => setSelectedMember(null)}
+      />
     </main>
   );
 }

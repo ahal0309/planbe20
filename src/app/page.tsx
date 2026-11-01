@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import KineticGrid from "@/components/ui/kinetic-grid";
+import ArchitecturalExpertise from "@/components/ArchitecturalExpertise";
 
 interface PhilosophySlide {
   kicker: string;
@@ -172,8 +173,11 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Architectural Expertise Section */}
+      <ArchitecturalExpertise />
+
       {/* Interactive Kinetic Grid Wrapper: Client Reviews & Philosophy */}
-      <KineticGrid globalColor="architectural" className="w-full my-12 border-y border-ink/10 shadow-[inset_0_2px_12px_rgba(0,0,0,0.02)]">
+      <KineticGrid globalColor="architectural" className="w-full my-0 border-b border-ink/10 shadow-[inset_0_2px_12px_rgba(0,0,0,0.02)]">
         {/* Client Testimonials Section */}
         <section id="testimonials" className="w-full max-w-container-max mx-auto px-6 md:px-margin-desktop py-20 md:py-32 scroll-mt-36 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16">
@@ -369,20 +373,20 @@ export default function HomePage() {
 
           </div>
         </section>
-      </KineticGrid>
 
-      {/* CTA Section */}
-      <section id="contact" className="w-full max-w-container-max mx-auto px-6 md:px-margin-desktop py-24 md:py-36 flex flex-col items-center justify-center text-center scroll-mt-36">
-        <h2 className="font-serif text-4xl sm:text-6xl md:text-[56px] font-semibold mb-8 max-w-2xl leading-tight">
-          Design Your Way of Being.
-        </h2>
-        <Link
-          href="/contact#inquiry"
-          className="inline-flex text-sm leading-[1.5] tracking-[0.2em] font-bold uppercase border-b-2 border-ink pb-1 hover:text-ochre hover:border-ochre transition-colors duration-300"
-        >
-          Request a Consultation →
-        </Link>
-      </section>
+        {/* CTA Section */}
+        <section id="contact" className="w-full max-w-container-max mx-auto px-6 md:px-margin-desktop py-24 md:py-36 flex flex-col items-center justify-center text-center scroll-mt-36 relative z-10">
+          <h2 className="font-serif text-4xl sm:text-6xl md:text-[56px] font-semibold mb-8 max-w-2xl leading-tight">
+            Design Your Way of Being.
+          </h2>
+          <Link
+            href="/contact#inquiry"
+            className="inline-flex text-sm leading-[1.5] tracking-[0.2em] font-bold uppercase border-b-2 border-ink pb-1 hover:text-ochre hover:border-ochre transition-colors duration-300"
+          >
+            Request a Consultation →
+          </Link>
+        </section>
+      </KineticGrid>
     </>
   );
 }
