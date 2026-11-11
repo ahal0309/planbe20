@@ -33,7 +33,7 @@ export default function Navbar() {
                 width={220}
                 height={100}
                 priority
-                className="w-28 sm:w-32 md:w-36 lg:w-40 h-auto object-contain drop-shadow-[0_0_12px_rgba(255,255,255,0.85)] filter contrast-125"
+                className="w-28 sm:w-32 md:w-36 lg:w-40 h-auto object-contain"
               />
             </div>
           </Link>

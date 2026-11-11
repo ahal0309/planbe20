@@ -124,13 +124,13 @@ export default function ServicesPage() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                 {/* 1. Title & Tag Block (Left) */}
                 <div className="lg:col-span-4 flex items-start space-x-6">
-                  <span className="font-mono text-lg md:text-xl text-[#8FA3A6] font-semibold tracking-wider flex-shrink-0 mt-1">
+                  <span className="font-mono text-xl sm:text-2xl md:text-3xl text-[#8FA3A6] font-semibold tracking-wider flex-shrink-0 mt-1">
                     {service.num}
                   </span>
                   <div className="flex flex-col">
-                    <h3 className="font-serif text-2xl md:text-3xl text-[#888888] font-medium leading-tight group-hover:text-[#3E2723] transition-colors duration-300">
+                    <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#111111] font-medium leading-tight group-hover:text-[#3E2723] transition-colors duration-300">
                       {service.title}
-                    </h3>
+                    </h2>
                     <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#8FA3A6] mt-3 block">
                       {service.tag}
                     </span>
@@ -138,27 +138,28 @@ export default function ServicesPage() {
                 </div>
  
                 {/* 2. Description Block (Center) */}
-                <div className="lg:col-span-4 flex flex-col justify-center lg:px-4">
-                  <p className="text-sm text-[#6A6A6A] leading-relaxed font-light mb-4">
+                <div className="lg:col-span-4 flex flex-col justify-center">
+                  <p className="font-sans text-sm sm:text-base md:text-lg text-[#6A6A6A] leading-relaxed text-left font-light mb-6">
                     {service.description}
                   </p>
                   <Link
                     href={service.href}
-                    className="text-xs font-bold tracking-[0.15em] uppercase text-[#888888] hover:text-[#3E2723] transition-colors duration-300 w-fit"
+                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold tracking-[0.18em] uppercase text-[#888888] hover:text-[#3E2723] transition-colors duration-300 w-fit"
                   >
-                    {service.linkText}
+                    <span>{service.linkText}</span>
+                    <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </Link>
                 </div>
 
                 {/* 3. Image & Redirect Button Block (Right) */}
-                <div className="lg:col-span-4 flex flex-col sm:flex-row items-center sm:justify-end gap-4 w-full">
-                  <div className="relative w-full sm:w-80 h-56 sm:h-48 overflow-hidden rounded-md bg-[#EAE8E4] flex-shrink-0 group/img">
+                <div className="lg:col-span-4 flex items-center justify-end gap-4 w-full">
+                  <div className="relative w-full max-w-[280px] h-48 sm:h-44 overflow-hidden rounded-md bg-[#EAE8E4] flex-shrink-0 group/img">
                     <Image
                       src={service.image}
                       alt={service.title}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, 320px"
+                      sizes="(max-width: 640px) 100vw, 280px"
                     />
                     <Link
                       href={service.href}
