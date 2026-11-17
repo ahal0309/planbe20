@@ -103,7 +103,7 @@ export default function Hero() {
           <div className="pointer-events-auto flex flex-col items-start text-left">
             <h2 className="font-serif text-[2rem] leading-[1.1] sm:text-4xl md:text-5xl lg:text-[4.5rem] text-white tracking-tight font-light mb-6 sm:mb-8 md:mb-0 drop-shadow-[0_4px_28px_rgba(0,0,0,0.75)]">
               Design your way<br />
-              of bëing
+              of being
             </h2>
           </div>
 

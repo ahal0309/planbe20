@@ -307,9 +307,6 @@ export default function ContactPage() {
                 Open <span className="text-[#5A3728] italic font-light">Roles</span>
               </h2>
             </div>
-            <p className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#8FA3A6] max-w-[220px] md:text-right md:pb-1">
-              Select a role below to view details and submit your portfolio
-            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

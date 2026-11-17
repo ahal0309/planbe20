@@ -505,7 +505,7 @@ export default function ArchitecturalExpertise() {
       </div>
 
       {/* Pagination Dot Navigation in studio brown */}
-      <div className="flex items-center justify-center gap-2.5 mt-8">
+      <div className="relative z-10 flex items-center justify-center gap-2.5 mt-8">
         {disciplines.map((_, i) => (
           <button
             key={i}
@@ -517,7 +517,7 @@ export default function ArchitecturalExpertise() {
             className={`rounded-full transition-all duration-300 ${
               i === index
                 ? "w-8 h-2.5 bg-gradient-to-r from-[#5A3728] to-[#8B5A3E] scale-105 shadow-sm"
-                : "w-2.5 h-2.5 bg-black/20 hover:bg-[#5A3728]/50"
+                : "w-2.5 h-2.5 bg-[#8A8A8A] hover:bg-[#5A3728]/70 opacity-90"
             }`}
           />
         ))}

@@ -136,7 +136,7 @@ export default function HomePage() {
       <Hero />
 
       {/* Process Section */}
-      <section id="process" className="w-full bg-[#3E2723] text-surface py-20 md:py-32 scroll-mt-36">
+      <section id="process" className="w-full bg-[#5A3728] text-surface py-20 md:py-32 scroll-mt-36">
         <div className="max-w-container-max mx-auto px-6 md:px-margin-desktop grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-gutter">
           <div className="md:col-span-5">
             <span className="text-sm leading-[1.5] tracking-[0.2em] font-bold uppercase text-ashen block mb-4">

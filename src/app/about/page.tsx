@@ -96,27 +96,27 @@ export default function AboutPage() {
       </div>
 
       {/* About Sections Cards Container */}
-      <div className="max-w-[1400px] mx-auto flex flex-col gap-12 md:gap-16 mb-24">
+      <div className="max-w-[1400px] mx-auto flex flex-col gap-10 md:gap-14 mb-24">
         {/* 2. Who We Are Card */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeUp}
-          className="group w-full bg-white border border-[#111111]/5 rounded-md p-8 md:p-12 hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:border-[#111111]/10 transition-all duration-700"
+          className="group w-full bg-white border border-[#111111]/5 rounded-md p-6 sm:p-8 md:p-10 hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:border-[#111111]/10 transition-all duration-700"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
             <div className="lg:col-span-4 flex flex-col justify-start">
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium text-[#111111] leading-tight">
+              <h2 className="font-serif text-xl sm:text-2xl md:text-[28px] lg:text-[32px] font-medium text-[#111111] leading-[1.25]">
                 Who We Are
               </h2>
-              <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#8FA3A6] mt-3 block">
+              <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.15em] uppercase text-[#8FA3A6] mt-2 block">
                 Studio Background & Roots
               </span>
             </div>
 
             <div className="lg:col-span-8 flex flex-col justify-center">
-              <p className="font-sans text-base sm:text-lg md:text-xl text-[#6A6A6A] leading-relaxed text-left font-light">
+              <p className="font-sans text-xs sm:text-sm md:text-[15px] text-[#6A6A6A] leading-relaxed text-left font-light">
                 <strong className="font-bold text-[#111111]">Plan Be Design Studio</strong> is a Kochi-based architectural and interior design practice established in 2018, creating climate-responsive, contextual, and enduring spaces rooted in Kerala’s tropical climate, culture, and landscape. With over 100 completed projects across residential, commercial, hospitality, and institutional sectors, including homes, interiors, resorts, commercial developments, community halls, and churches, we offer comprehensive, multidisciplinary design solutions from concept to completion. Our approach balances functionality, sustainability, and timeless aesthetics, ensuring every project responds thoughtfully to its site, environment, and the people who experience it. Beyond design, we provide integrated project management and site supervision, delivering quality, precision, and seamless execution from the initial concept to final handover. Guided by thoughtful design, honest materials, and a commitment to performance, we create comfortable, efficient, and lasting spaces that truly belong to their place and purpose.
               </p>
             </div>
@@ -129,25 +129,25 @@ export default function AboutPage() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeUp}
-          className="group w-full bg-white border border-[#111111]/5 rounded-md p-8 md:p-12 hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:border-[#111111]/10 transition-all duration-700"
+          className="group w-full bg-white border border-[#111111]/5 rounded-md p-6 sm:p-8 md:p-10 hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:border-[#111111]/10 transition-all duration-700"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
             <div className="lg:col-span-4 flex flex-col justify-start">
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium text-[#111111] leading-tight">
+              <h2 className="font-serif text-xl sm:text-2xl md:text-[28px] lg:text-[32px] font-medium text-[#111111] leading-[1.25]">
                 Our Philosophy
               </h2>
-              <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#8FA3A6] mt-3 block">
+              <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.15em] uppercase text-[#8FA3A6] mt-2 block">
                 Design Approach & Core Beliefs
               </span>
             </div>
 
             <div className="lg:col-span-8 flex flex-col justify-center">
-              <p className="text-xl sm:text-2xl md:text-3xl font-light leading-relaxed text-[#111111] mb-6 md:mb-8 text-left font-serif">
+              <p className="text-lg sm:text-xl md:text-2xl font-light leading-relaxed text-[#111111] mb-5 md:mb-6 text-left font-serif">
                 We seek inspiration in simplicity, finding harmony between architecture, nature, and everyday life.
               </p>
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {approachItems.map((item, index) => (
-                  <p key={index} className="text-base sm:text-lg md:text-xl text-[#6A6A6A] leading-relaxed text-left font-light">
+                  <p key={index} className="text-xs sm:text-sm md:text-[15px] text-[#6A6A6A] leading-relaxed text-left font-light">
                     {item.description}
                   </p>
                 ))}
@@ -162,23 +162,23 @@ export default function AboutPage() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={fadeUp}
-          className="group w-full bg-white border border-[#111111]/5 rounded-md p-8 md:p-12 hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:border-[#111111]/10 transition-all duration-700"
+          className="group w-full bg-white border border-[#111111]/5 rounded-md p-6 sm:p-8 md:p-10 hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:border-[#111111]/10 transition-all duration-700"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
             <div className="lg:col-span-4 flex flex-col justify-start">
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium text-[#111111] leading-tight">
+              <h2 className="font-serif text-xl sm:text-2xl md:text-[28px] lg:text-[32px] font-medium text-[#111111] leading-[1.25]">
                 Our Vision
               </h2>
-              <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#8FA3A6] mt-3 block">
+              <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.15em] uppercase text-[#8FA3A6] mt-2 block">
                 Future & Community Impact
               </span>
             </div>
             
             <div className="lg:col-span-8 flex flex-col justify-center">
-              <p className="text-xl sm:text-2xl md:text-3xl font-light leading-relaxed text-[#111111] mb-6 md:mb-8 text-left font-serif">
+              <p className="text-lg sm:text-xl md:text-2xl font-light leading-relaxed text-[#111111] mb-5 md:mb-6 text-left font-serif">
                 To shape a built environment where architecture responds intelligently to place, enhances everyday experiences, and contributes positively to the communities it serves.
               </p>
-              <p className="text-base sm:text-lg md:text-xl text-[#6A6A6A] leading-relaxed text-left font-light">
+              <p className="text-xs sm:text-sm md:text-[15px] text-[#6A6A6A] leading-relaxed text-left font-light">
                 Through thoughtful design, innovation, and a commitment to quality, we aspire to create timeless spaces that inspire, endure, and leave a lasting impact on people and their surroundings.
               </p>
             </div>
@@ -187,7 +187,7 @@ export default function AboutPage() {
       </div>
 
       {/* 5. Our Team Section */}
-      <section className="w-full py-24 md:py-32 bg-[#3E2723]">
+      <section className="w-full py-24 md:py-32 bg-[#5A3728]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-margin-desktop">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
             <motion.div
@@ -239,7 +239,7 @@ export default function AboutPage() {
                   className="flex flex-col group min-w-[280px] sm:min-w-[320px] max-w-[320px] snap-start shrink-0 cursor-pointer"
                 >
                   {/* Portrait Photograph with Rounded Corners - Blank / Placeholder */}
-                  <div className="w-full aspect-[4/5] bg-[#2E1D19] border border-white/10 flex items-center justify-center relative overflow-hidden mb-5 rounded-2xl md:rounded-3xl shadow-lg transition-transform duration-500 group-hover:-translate-y-1">
+                  <div className="w-full aspect-[4/5] bg-[#472B20] border border-white/10 flex items-center justify-center relative overflow-hidden mb-5 rounded-2xl md:rounded-3xl shadow-lg transition-transform duration-500 group-hover:-translate-y-1">
                     {member.image ? (
                       <Image
                         src={member.image}
@@ -249,7 +249,7 @@ export default function AboutPage() {
                         sizes="320px"
                       />
                     ) : (
-                      <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-[#35211D] to-[#251714] text-white/40 group-hover:text-white/80 transition-colors duration-500">
+                      <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-[#4D3024] to-[#3B2219] text-white/40 group-hover:text-white/80 transition-colors duration-500">
                         <div className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center mb-3 bg-white/5">
                           <span className="font-serif text-2xl tracking-widest text-[#E5E0D8]/70">
                             {member.name.replace(/^Ar\.\s*/, '').split(' ').map(n => n[0]).slice(0, 2).join('')}

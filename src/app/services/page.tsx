@@ -119,19 +119,19 @@ export default function ServicesPage() {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeUp}
-              className="group w-full bg-white border border-[#111111]/5 rounded-md p-8 md:p-12 hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:border-[#111111]/10 transition-all duration-700"
+              className="group w-full bg-white border border-[#111111]/5 rounded-md p-6 sm:p-8 md:p-10 hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] hover:border-[#111111]/10 transition-all duration-700"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
                 {/* 1. Title & Tag Block (Left) */}
-                <div className="lg:col-span-4 flex items-start space-x-6">
-                  <span className="font-mono text-xl sm:text-2xl md:text-3xl text-[#8FA3A6] font-semibold tracking-wider flex-shrink-0 mt-1">
+                <div className="lg:col-span-4 flex items-start space-x-4">
+                  <span className="font-mono text-base sm:text-lg md:text-xl text-[#8FA3A6] font-semibold tracking-wider flex-shrink-0 mt-0.5">
                     {service.num}
                   </span>
                   <div className="flex flex-col">
-                    <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#111111] font-medium leading-tight group-hover:text-[#3E2723] transition-colors duration-300">
+                    <h2 className="font-serif text-xl sm:text-2xl md:text-[28px] lg:text-[32px] text-[#111111] font-medium leading-[1.25] group-hover:text-[#3E2723] transition-colors duration-300">
                       {service.title}
                     </h2>
-                    <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#8FA3A6] mt-3 block">
+                    <span className="text-[9px] sm:text-[10px] font-bold tracking-[0.15em] uppercase text-[#8FA3A6] mt-2 block">
                       {service.tag}
                     </span>
                   </div>
@@ -139,42 +139,42 @@ export default function ServicesPage() {
  
                 {/* 2. Description Block (Center) */}
                 <div className="lg:col-span-4 flex flex-col justify-center">
-                  <p className="font-sans text-sm sm:text-base md:text-lg text-[#6A6A6A] leading-relaxed text-left font-light mb-6">
+                  <p className="font-sans text-xs sm:text-sm md:text-[15px] text-[#6A6A6A] leading-relaxed text-left font-light mb-4">
                     {service.description}
                   </p>
                   <Link
                     href={service.href}
-                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold tracking-[0.18em] uppercase text-[#888888] hover:text-[#3E2723] transition-colors duration-300 w-fit"
+                    className="inline-flex items-center gap-1.5 text-xs sm:text-xs font-bold tracking-[0.18em] uppercase text-[#888888] hover:text-[#3E2723] transition-colors duration-300 w-fit"
                   >
                     <span>{service.linkText}</span>
-                    <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </Link>
                 </div>
 
                 {/* 3. Image & Redirect Button Block (Right) */}
                 <div className="lg:col-span-4 flex items-center justify-end gap-4 w-full">
-                  <div className="relative w-full max-w-[280px] h-48 sm:h-44 overflow-hidden rounded-md bg-[#EAE8E4] flex-shrink-0 group/img">
+                  <div className="relative w-full max-w-[240px] h-40 sm:h-38 overflow-hidden rounded-md bg-[#EAE8E4] flex-shrink-0 group/img">
                     <Image
                       src={service.image}
                       alt={service.title}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, 280px"
+                      sizes="(max-width: 640px) 100vw, 240px"
                     />
                     <Link
                       href={service.href}
-                      className="absolute top-3 right-3 sm:hidden z-10 w-11 h-11 rounded-full bg-white/90 backdrop-blur-md border border-[#111111]/10 flex items-center justify-center text-[#111111] shadow-md transition-all duration-300 active:scale-95"
+                      className="absolute top-3 right-3 sm:hidden z-10 w-10 h-10 rounded-full bg-white/90 backdrop-blur-md border border-[#111111]/10 flex items-center justify-center text-[#111111] shadow-md transition-all duration-300 active:scale-95"
                       title={service.linkText}
                     >
-                      <ArrowUpRight size={18} strokeWidth={1.5} />
+                      <ArrowUpRight size={16} strokeWidth={1.5} />
                     </Link>
                   </div>
                   <Link
                     href={service.href}
-                    className="hidden sm:flex flex-shrink-0 w-12 h-12 rounded-full border border-[#111111]/10 items-center justify-center text-[#111111] bg-transparent group-hover:bg-[#111111] group-hover:text-white transition-all duration-500 hover:scale-105 active:scale-95"
+                    className="hidden sm:flex flex-shrink-0 w-11 h-11 rounded-full border border-[#111111]/10 items-center justify-center text-[#111111] bg-transparent group-hover:bg-[#111111] group-hover:text-white transition-all duration-500 hover:scale-105 active:scale-95"
                     title={service.linkText}
                   >
-                    <ArrowUpRight size={20} strokeWidth={1.5} />
+                    <ArrowUpRight size={18} strokeWidth={1.5} />
                   </Link>
                 </div>
               </div>
